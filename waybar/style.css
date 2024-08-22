@@ -1,0 +1,65 @@
+@import "./colours.css";
+
+* {
+    font-family: Courier Prime Code;
+    font-size: 16px;
+    border-radius: 0px;
+    /* :[ */
+    min-height: 0px;
+    padding: 1px 0px 0.5px 0px;
+}
+
+window#waybar {
+    background-color: @background;
+    color: @foreground;
+}
+
+#workspaces {
+    background-color: transparent;
+}
+
+#workspaces button {
+    padding: 0 5px;
+    color: @foreground;
+}
+
+#workspaces button.active {
+    background-color: @flamingo;
+    color: @bg-accent;
+    /* color: @background; */
+}
+
+.modules-left {
+}
+
+#window {
+    color: @foreground;
+    background-color: @background;
+    padding-left: 4px;
+}
+
+.modules-right {
+    background-color: @background;
+}
+
+#pulseaudio {
+    color: @lime;
+}
+#cpu {
+    color: @turquoise;
+}
+#memory {
+    color: @seaglass;
+}
+#temperature {
+    color: @lemon;
+}
+#battery {
+    color: @flamingo;
+}
+#clock {
+    color: @pink;
+}
+#tray button {
+    padding-left: 4px;
+}

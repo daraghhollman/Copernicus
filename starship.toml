@@ -1,0 +1,70 @@
+format = """
+$python\
+$directory\
+$username\
+$hostname\
+$git_branch\
+$git_status\
+\n> 
+"""
+
+add_newline = true
+
+[fill]
+symbol = ' '
+
+[directory]
+style = "fg:bright-cyan bg:#0e1419"
+format = "[ $path ]($style)"
+truncation_length = 5
+truncation_symbol = "…/"
+
+[username]
+style_user = 'fg:#e5e1cf bg:#0e1419'
+style_root = 'fg:red bg:#0e1419'
+format = '[$user]($style)'
+disabled = false
+show_always = true
+
+[hostname]
+ssh_only = false
+format = '[@](fg:bold cyan)[$hostname](fg:bold purple bg:#0e1419)'
+disabled = false
+
+[env_var]
+variable = 'CONDA_DEFAULT_ENV'
+format = "[ $env_value ](fg:e5e1cf bg:#0e1419)"
+disabled = false
+default = ''
+
+[python]
+format = '[(( $virtualenv ))]($style)'
+
+[git_branch]
+symbol = ""
+format = '[[ $symbol $branch ](fg:bright-blue bg:#0e1419)]($style)'
+
+[git_status]
+format = '[[($all_status$ahead_behind )](fg:purple bg:#0e1419)]($style)'
+
+[battery]
+full_symbol = '󰁹 '
+charging_symbol = '󰂄 '
+discharging_symbol = '󱟤 '
+format = '[$symbol$percentage]($style)'
+
+[[battery.display]] # 'bold red' style and discharging_symbol when capacity is between 0% and 30%
+threshold = 30
+style = 'bold red'
+
+[[battery.display]] # 'bold red' style and discharging_symbol when capacity is between 30% and 100%
+threshold = 100
+style = 'bold #FFB454'
+
+
+[time]
+disabled = false
+time_format = "%T" # Hour:Minute Format
+style = "bg:#0e1419"
+format = '[[ $time](fg:bright-yellow bg:#0e1419)]($style)'
+
