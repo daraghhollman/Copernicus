@@ -1,15 +1,10 @@
-!#/bin/sh
+!#/usr/bin/sh
 
 # Install packages
 
-sudo pacman -Syu wayland waybar hyprland foot ranger aerc kanata newsboat mako wofi zathura zathura-pdf-poppler rustup
-
-cargo install kanata
+sudo pacman -Syu wayland waybar hyprland foot ranger aerc kanata newsboat mako wofi zathura zathura-pdf-poppler
 
 # Make and enable services
-sudo ln -s $HOME/Copernicus/systemd/kanata.service /etc/systemd/system/kanata.service
-
-sudo systemctl enable kanata.service
 
 # Make directories
 mkdir -p $HOME/.config/
