@@ -2,7 +2,7 @@
 
 # Install packages
 
-sudo pacman -Syu waybar hyprland foot ranger aerc kanata newsboat mako wofi zathura zathura-pdf-poppler rustup
+sudo pacman -Syu wayland waybar hyprland foot ranger aerc kanata newsboat mako wofi zathura zathura-pdf-poppler rustup
 
 cargo install kanata
 
@@ -59,3 +59,6 @@ ln -s $HOME/Copernicus/mako/* $HOME/.config/mako/
 ln -s $HOME/Copernicus/wofi/* $HOME/.config/wofi/
 
 ln -s $HOME/Copernicus/zathura/* $HOME/.config/zathura/
+
+# Set up crontabs
+(crontab -l 2>/dev/null; echo "*/20 * * * * /usr/bin/newsboat -x reload") | crontab -

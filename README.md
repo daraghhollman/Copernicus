@@ -9,3 +9,7 @@ The configuration files for my personal laptop!
 * Terminal: Foot
 * Mail: aerc
 * RSS: newsboat
+
+## Need to add
+
+* Audio server
