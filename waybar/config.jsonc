@@ -28,11 +28,11 @@
 	"cpu": {
 		"format": "[ CPU:{usage}% ]",
 		"tooltip": false,
-		"on-click": "foot -F btop"
+		"on-click": "foot -F htop"
 	},
 	"memory": {
 		"format": "[ MEM:{percentage}% ]",
-		"on-click": "foot -F btop"
+		"on-click": "foot -F htop"
 	},
 	"temperature": {
 		// "thermal-zone": 2,
@@ -40,7 +40,7 @@
 		"critical-threshold": 80,
 		"format-critical": "[ !{temperatureC}°C! ]",
 		"format": "[ {temperatureC}°C ]",
-		"on-click": "foot -F btop"
+		"on-click": "foot -F htop"
 	},
 	"battery": {
 		"format": "[ BAT:{capacity}% ]"
