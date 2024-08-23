@@ -29,6 +29,8 @@ mkdir -p $HOME/.config/wofi/
 
 mkdir -p $HOME/.config/zathura/
 
+mkdir -p $HOME/.config/nvim/
+
 # Make links
 ln -s $HOME/Copernicus/waybar/* $HOME/.config/waybar/
 ln -s $HOME/Copernicus/waybar/scripts/* $HOME/.config/waybar/scripts/
@@ -54,6 +56,8 @@ ln -s $HOME/Copernicus/mako/* $HOME/.config/mako/
 ln -s $HOME/Copernicus/wofi/* $HOME/.config/wofi/
 
 ln -s $HOME/Copernicus/zathura/* $HOME/.config/zathura/
+
+ln -s $HOME/Copernicus/nvim/* $HOME/.config/nvim/
 
 # Set up crontabs
 (crontab -l 2>/dev/null; echo "*/20 * * * * /usr/bin/newsboat -x reload") | crontab -
