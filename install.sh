@@ -1,6 +1,7 @@
 # Install packages
+echo "Installing packages"
 
-sudo pacman -Syu wayland waybar hyprland foot ranger aerc newsboat mako wofi zathura zathura-pdf-poppler neovim cronie tree-sitter npm dotnet-sdk unzip ttf-nerd-fonts-symbols starship thefuck zoxide fzf exa swww network-manager-applet blueman firefox spotify
+sudo pacman -Syu wayland waybar hyprland foot ranger aerc newsboat mako wofi zathura zathura-pdf-poppler neovim cronie tree-sitter npm dotnet-sdk unzip ttf-nerd-fonts-symbols starship thefuck zoxide fzf exa swww network-manager-applet blueman firefox spotify thunar htop
 
 sudo pacman -S --needed git base-devel && git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si && cd .. && sudo rm -rf yay/
 
@@ -9,6 +10,8 @@ yay -S ttf-courier-prime
 sudo npm install -g tree-sitter-cli
 
 # Make directories
+echo "Making directories"
+
 mkdir -p $HOME/.config/
 mkdir -p $HOME/.config/waybar/
 mkdir -p $HOME/.config/waybar/scripts/
@@ -36,6 +39,8 @@ mkdir -p $HOME/.config/nvim/
 mkdir -p $HOME/.config/mako/icons
 
 # Make links
+echo "Creating symlinks"
+
 ln -s $HOME/Copernicus/waybar/* $HOME/.config/waybar/
 ln -s $HOME/Copernicus/waybar/scripts/* $HOME/.config/waybar/scripts/
 
@@ -66,7 +71,11 @@ ln -s $HOME/Copernicus/nvim/* $HOME/.config/nvim/
 ln -s $HOME/Copernicus/mako/icons/* $HOME/.config/mako/icons/
 
 # Set up crontabs
+echo "Adding cron jobs"
+
 (crontab -l 2>/dev/null; echo "*/20 * * * * /usr/bin/newsboat -x reload") | crontab -
 
 # Systemd services
+echo "Enabling services"
+
 sudo systemctl enable bluetooth
