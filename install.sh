@@ -1,5 +1,3 @@
-!#/usr/bin/sh
-
 # Install packages
 
 sudo pacman -Syu wayland waybar hyprland foot ranger aerc newsboat mako wofi zathura zathura-pdf-poppler neovim cronie tree-sitter npm dotnet-sdk unzip ttf-nerd-fonts-symbols
