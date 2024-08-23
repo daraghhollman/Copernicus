@@ -4,7 +4,7 @@
 
 sudo pacman -Syu wayland waybar hyprland foot ranger aerc newsboat mako wofi zathura zathura-pdf-poppler neovim cronie tree-sitter npm dotnet-sdk unzip
 
-# Make and enable services
+sudo npm install -g tree-sitter-cli
 
 # Make directories
 mkdir -p $HOME/.config/
