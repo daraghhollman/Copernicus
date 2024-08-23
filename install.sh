@@ -2,9 +2,9 @@
 
 sudo pacman -Syu wayland waybar hyprland foot ranger aerc newsboat mako wofi zathura zathura-pdf-poppler neovim cronie tree-sitter npm dotnet-sdk unzip ttf-nerd-fonts-symbols
 
-sudo pacman -S --needed git base-devel && git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si && cd .. && rm -rf yay/
+sudo pacman -S --needed git base-devel && git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si && cd .. && sudo rm -rf yay/
 
-sudo yay -S ttf-courier-prime
+yay -S ttf-courier-prime
 
 sudo npm install -g tree-sitter-cli
 
