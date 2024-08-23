@@ -1,6 +1,6 @@
 # Install packages
 
-sudo pacman -Syu wayland waybar hyprland foot ranger aerc newsboat mako wofi zathura zathura-pdf-poppler neovim cronie tree-sitter npm dotnet-sdk unzip ttf-nerd-fonts-symbols
+sudo pacman -Syu wayland waybar hyprland foot ranger aerc newsboat mako wofi zathura zathura-pdf-poppler neovim cronie tree-sitter npm dotnet-sdk unzip ttf-nerd-fonts-symbols starship thefuck zoxide fzf
 
 sudo pacman -S --needed git base-devel && git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si && cd .. && sudo rm -rf yay/
 
@@ -33,6 +33,8 @@ mkdir -p $HOME/.config/zathura/
 
 mkdir -p $HOME/.config/nvim/
 
+mkdir -p $HOME/.config/mako/icons
+
 # Make links
 ln -s $HOME/Copernicus/waybar/* $HOME/.config/waybar/
 ln -s $HOME/Copernicus/waybar/scripts/* $HOME/.config/waybar/scripts/
@@ -60,6 +62,8 @@ ln -s $HOME/Copernicus/wofi/* $HOME/.config/wofi/
 ln -s $HOME/Copernicus/zathura/* $HOME/.config/zathura/
 
 ln -s $HOME/Copernicus/nvim/* $HOME/.config/nvim/
+
+ln -s $HOME/Copernicus/mako/icons/* $HOME/.config/mako/icons/
 
 # Set up crontabs
 (crontab -l 2>/dev/null; echo "*/20 * * * * /usr/bin/newsboat -x reload") | crontab -

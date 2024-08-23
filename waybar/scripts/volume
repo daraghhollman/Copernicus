@@ -1,6 +1,6 @@
 #!/bin/bash
 
-iDIR="$HOME/.config/HyprV/mako/icons"
+iDIR="$HOME/.config/mako/icons"
 
 # Get Volume
 get_volume() {
@@ -30,21 +30,21 @@ notify_user() {
 # Increase Volume
 inc_volume() {
     step=${1:-1}
-    pamixer -i "$step"
+    pamixer -i "$step" && notify_user
 }
 
 # Decrease Volume
 dec_volume() {
     step=${1:-1}
-    pamixer -d "$step"
+    pamixer -d "$step" && notify_user
 }
 
 # Toggle Mute
 toggle_mute() {
 	if [ "$(pamixer --get-mute)" == "false" ]; then
-		pamixer -m
+        pamixer -m && notify-send -h string:x-canonical-private-synchronous:sys-notify -u low -i "$iDIR/volume-mute.png" "Volume Switched OFF"
 	elif [ "$(pamixer --get-mute)" == "true" ]; then
-		pamixer -u
+		pamixer -u && notify-send -h string:x-canonical-private-synchronous:sys-notify -u low -i "$(get_icon)" "Volume Switched ON"
 	fi
 }
 
