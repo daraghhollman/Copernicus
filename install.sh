@@ -2,7 +2,7 @@
 
 # Install packages
 
-sudo pacman -Syu wayland waybar hyprland foot ranger aerc newsboat mako wofi zathura zathura-pdf-poppler install
+sudo pacman -Syu wayland waybar hyprland foot ranger aerc newsboat mako wofi zathura zathura-pdf-poppler nvim
 
 # Make and enable services
 
