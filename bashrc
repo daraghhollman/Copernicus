@@ -42,6 +42,7 @@ alias onlineBackup='read -s -p "Remote sudo password: " SUDOPASS && rsync -auP -
 # Virual Environments
 alias jupt_testing="source ~/Main/envs/jupt_testing/bin/activate"
 alias cometPy="source /home/daraghhollman/Main/CometsThesis/Python/cometPy/bin/activate"
+alias mupt="source ~/Main/envs/mupt/bin/activate"
 
 # Software
 alias fnv='nvim $(fzf --preview="bat --color=always {}")'

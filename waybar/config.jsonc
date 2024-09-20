@@ -20,7 +20,6 @@
 		"icon-size": 14
 	},
 	"clock": {
-		// "timezone": "America/New_York",
 		"tooltip-format": "<big>[{:%Y %B}]</big>\n<tt><small>{calendar}</small></tt>",
 		"format": "[ {:%H:%M} ]",
 		"format-alt": "[ {:%Y-%m-%d} ]"
@@ -52,6 +51,6 @@
 		"on-click": "pavucontrol"
 	},
 	"hyprland/window": {
-		"format": "󰣇 {initialTitle}"
+		"format": "󰣇 [{}]"
 	}
 }

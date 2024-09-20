@@ -14,7 +14,6 @@ return {
                 ensure_installed = {
                     "lua_ls",
                     "bashls",
-                    "ruff_lsp",
                     "pyright",
                     "html",
                     "cssls",
@@ -58,9 +57,6 @@ return {
             lspconfig.bashls.setup({
                 capabilties = capabilities,
             })
-            lspconfig.ruff_lsp.setup({
-                capabilties = capabilities,
-            })
             lspconfig.html.setup({
                 capabilties = capabilities,
             })
@@ -75,12 +71,7 @@ return {
                 on_attach = on_attach,
             })
             lspconfig.pyright.setup({
-                settings = {
-                    pyright = {
-                        -- Using everything else from ruff
-                        disableOrganizeImports = true,
-                    },
-                },
+                capabilities = capabilities,
             })
 
             vim.keymap.set("n", "K", vim.lsp.buf.hover, {})

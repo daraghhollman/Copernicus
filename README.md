@@ -13,3 +13,4 @@ The configuration files for my personal laptop!
 ## Need to add
 
 * Audio server
+* power management
