@@ -63,3 +63,6 @@ window#waybar {
 #tray button {
     padding-left: 4px;
 }
+#backlight {
+    color: @olive;
+}
