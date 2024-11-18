@@ -28,19 +28,18 @@
 	"cpu": {
 		"format": "[ CPU:{usage}% ]",
 		"tooltip": false,
-		"on-click": "foot -F htop"
+		"on-click": "foot -F btop"
 	},
 	"memory": {
 		"format": "[ MEM:{percentage}% ]",
-		"on-click": "foot -F htop"
+		"on-click": "foot -F btop"
 	},
 	"temperature": {
-		// "thermal-zone": 2,
-		// "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
-		"critical-threshold": 80,
+		"thermal-zone": 3,
+		"critical-threshold": 90,
 		"format-critical": "[ !{temperatureC}°C! ]",
 		"format": "[ {temperatureC}°C ]",
-		"on-click": "foot -F htop"
+		"on-click": "foot -F btop"
 	},
 	"battery": {
 		"format": "[ BAT:{capacity}% ]"

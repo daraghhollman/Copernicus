@@ -6,6 +6,8 @@
 source /usr/share/bash-completion/completions/git
 __git_complete dotfiles __git_main
 
+bind -s 'set completion-ignore-case on'
+
 alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
 
 # Append to history
@@ -36,13 +38,14 @@ alias yta='yt -x -f bestaudio/best'
 alias clear='clear && echo; /home/daraghhollman/Main/scripts/generateFetchPrompt.sh; neofetch --config /home/daraghhollman/.config/neofetch/bashrc_conf.conf'
 alias paper="python ~/Main/Projects/NowADS/nowADS.py"
 alias fetch="/home/daraghhollman/Main/scripts/infoDisplay.sh"
-alias backup="sudo rsync -auP --delete /home/daraghhollman/ /run/media/daraghhollman/SanDisk-Daragh/Copernicus_Home/"
+alias backup="sudo rsync -auP --delete /home/daraghhollman/ /run/media/daraghhollman/SanDisk-Daragh/Kepler_Home/"
 alias onlineBackup='read -s -p "Remote sudo password: " SUDOPASS && rsync -auP --delete --stats --rsync-path="echo $SUDOPASS | sudo -Sv && sudo rsync" /home/daraghhollman/ daraghhollman@192.168.0.73:/media/root/Backups/Copernicus_Home/'
 
 # Virual Environments
 alias jupt_testing="source ~/Main/envs/jupt_testing/bin/activate"
 alias cometPy="source /home/daraghhollman/Main/CometsThesis/Python/cometPy/bin/activate"
 alias mupt="source ~/Main/envs/mupt/bin/activate"
+alias manim_venv="source ~/Main/envs/manim/bin/activate"
 
 # Software
 alias fnv='nvim $(fzf --preview="bat --color=always {}")'
@@ -57,6 +60,7 @@ alias website="cd /home/daraghhollman/Main/Projects/personal/daraghhollman.githu
 
 # Other
 alias pylint="pylint --rcfile /home/daraghhollman/.config/pylintrc"
+alias diasvpn="sudo openvpn --config /home/daraghhollman/Main/Work/vpn/dhollman.ovpn"
 
 ### FUNCTIONS ###
 # Open pdfs
@@ -95,4 +99,4 @@ export PATH="$HOME/Main/scripts:$PATH"
 export PATH="/usr/local/texlive/2023/bin/x86_64-linux:$PATH"
 export PATH="$HOME/Main/Installations/jabref/build/image/bin/:$PATH"
 export PATH="$HOME/.cargo/bin/:$PATH"
-export PATH=$BUN_INSTALL/bin:$PATH
+export PATH="$BUN_INSTALL/bin:$PATH"
