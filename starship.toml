@@ -5,7 +5,7 @@ $username\
 $hostname\
 $git_branch\
 $git_status\
-\n> 
+\n > 
 """
 
 add_newline = true

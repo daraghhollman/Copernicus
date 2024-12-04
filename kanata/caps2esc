@@ -7,5 +7,5 @@
 )
 
 (defalias
-    caps2esc (tap-hold 200 200 esc lctrl)
+    caps2esc (tap-hold 100 100 esc lctrl)
 )

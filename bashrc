@@ -35,7 +35,6 @@ alias .....='cd ..; cd ..; cd ..; cd ..;'
 # Scripts
 alias yt='yt-dlp --add-metadata -i'
 alias yta='yt -x -f bestaudio/best'
-alias clear='clear && echo; /home/daraghhollman/Main/scripts/generateFetchPrompt.sh; neofetch --config /home/daraghhollman/.config/neofetch/bashrc_conf.conf'
 alias paper="python ~/Main/Projects/NowADS/nowADS.py"
 alias fetch="/home/daraghhollman/Main/scripts/infoDisplay.sh"
 alias backup="sudo rsync -auP --delete /home/daraghhollman/ /run/media/daraghhollman/SanDisk-Daragh/Kepler_Home/"
@@ -49,7 +48,7 @@ alias manim_venv="source ~/Main/envs/manim/bin/activate"
 
 # Software
 alias fnv='nvim $(fzf --preview="bat --color=always {}")'
-alias aurora="cd /home/daraghhollman/Installations/Aurora4x/Aurora/; FONT_NAME="FreeSerif" FONT_SIZE=9 SCALEHACKX=1 SCALEHACKY=1 MONO_IOMAP=all mono Aurora.exe"
+alias aurora="cd /home/daraghhollman/Installations/Aurora4x/; FONT_NAME="FreeSerif" FONT_SIZE=9 SCALEHACKX=1 SCALEHACKY=1 MONO_IOMAP=all mono Aurora.exe"
 alias hss='hugo server --noHTTPCache'
 
 # Navigation
@@ -96,6 +95,7 @@ export BUN_INSTALL="$HOME/.bun"
 
 ### PATH ###
 export PATH="$HOME/Main/scripts:$PATH"
+export PATH="$HOME/Main/scripts/tmux:$PATH"
 export PATH="/usr/local/texlive/2023/bin/x86_64-linux:$PATH"
 export PATH="$HOME/Main/Installations/jabref/build/image/bin/:$PATH"
 export PATH="$HOME/.cargo/bin/:$PATH"
