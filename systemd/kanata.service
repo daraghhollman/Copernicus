@@ -1,8 +1,0 @@
-[Unit]
-Description=Kanata key rebinder
-
-[Service]
-ExecStart=/home/daraghhollman/.cargo/bin/kanata -c /home/daraghhollman/.config/kanata/caps2esc
-
-[Install]
-WantedBy=multi-user.target

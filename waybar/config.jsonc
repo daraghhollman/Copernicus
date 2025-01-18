@@ -2,7 +2,11 @@
 	"spacing": 4,
 	// try to keep it 4px across the config
 	"height": 25,
-	"modules-left": ["hyprland/workspaces", "tray", "hyprland/window"],
+	"modules-left": [
+        "hyprland/workspaces",
+        "tray",
+        "hyprland/window"
+    ],
 	"modules-right": [
 		"cpu",
 		"memory",
@@ -56,5 +60,5 @@
     "backlight": {
         "device": "intel_backlight",
         "format": "[ BRI:{percent}% ]"
-    }
+    },
 }

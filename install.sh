@@ -1,7 +1,7 @@
 # Install packages
 echo "Installing packages"
 
-sudo pacman -Syu wayland waybar hyprland foot ranger aerc newsboat mako wofi zathura zathura-pdf-poppler neovim cronie tree-sitter npm dotnet-sdk unzip ttf-nerd-fonts-symbols starship thefuck zoxide fzf exa swww network-manager-applet blueman firefox thunar htop hypridle hyprlock pavucontrol pass wl-clipboard wev man pamixer brightnessctl qt5-wayland qt6-wayland batsignal udiskie nwg-displays gvfs slurp swappy grim tmux
+sudo pacman -Syu wayland waybar hyprland foot ranger aerc newsboat mako wofi zathura zathura-pdf-poppler neovim cronie tree-sitter npm dotnet-sdk unzip ttf-nerd-fonts-symbols starship thefuck zoxide fzf exa network-manager-applet blueman firefox thunar htop hypridle hyprlock pavucontrol pass wl-clipboard wev man pamixer brightnessctl qt5-wayland qt6-wayland batsignal udiskie nwg-displays gvfs slurp swappy grim tmux hyprpaper lazygit
 
 sudo pacman -S --needed git base-devel && git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si && cd .. && sudo rm -rf yay/
 
@@ -23,8 +23,6 @@ mkdir -p $HOME/.config/foot/
 mkdir -p $HOME/.config/ranger/
 
 mkdir -p $HOME/.config/aerc/
-
-mkdir -p $HOME/.config/kanata/
 
 mkdir -p $HOME/.config/newsboat/
 
@@ -55,8 +53,6 @@ ln -s $HOME/Copernicus/ranger/* $HOME/.config/ranger/
 ln -s $HOME/Copernicus/bashrc $HOME/.bashrc
 
 ln -s $HOME/Copernicus/aerc/* $HOME/.config/aerc/
-
-ln -s $HOME/Copernicus/kanata/* $HOME/.config/kanata/
 
 ln -s $HOME/Copernicus/newsboat/* $HOME/.config/newsboat/
 
