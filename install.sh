@@ -1,11 +1,11 @@
 # Install packages
 echo "Installing packages"
 
-sudo pacman -Syu wayland waybar hyprland foot ranger aerc newsboat mako wofi zathura zathura-pdf-poppler neovim cronie tree-sitter npm dotnet-sdk unzip ttf-nerd-fonts-symbols starship thefuck zoxide fzf exa network-manager-applet blueman firefox thunar htop hypridle hyprlock pavucontrol pass wl-clipboard wev man pamixer brightnessctl qt5-wayland qt6-wayland batsignal udiskie nwg-displays gvfs slurp swappy grim tmux hyprpaper lazygit
+sudo pacman -Syu wayland waybar hyprland foot ranger aerc newsboat mako wofi zathura zathura-pdf-poppler neovim cronie tree-sitter npm dotnet-sdk unzip ttf-nerd-fonts-symbols starship thefuck zoxide fzf exa network-manager-applet blueman firefox thunar htop hypridle hyprlock pavucontrol pass wl-clipboard wev man pamixer brightnessctl qt5-wayland qt6-wayland batsignal udiskie nwg-displays gvfs slurp swappy grim tmux hyprpaper lazygit obs-studio wireplumber xdg-desktop-portal-hyprland pyqt6 tmux openvpn bluez-utils ripgrep meson cmake cpio qutebrowser task yazi
 
 sudo pacman -S --needed git base-devel && git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si && cd .. && sudo rm -rf yay/
 
-yay -S ttf-courier-prime
+yay -S ttf-courier-prime zotero hyprshade
 
 sudo npm install -g tree-sitter-cli
 
@@ -35,6 +35,8 @@ mkdir -p $HOME/.config/zathura/
 mkdir -p $HOME/.config/nvim/
 
 mkdir -p $HOME/.config/mako/icons
+
+mkdir -p $HOME/.config/task
 
 # Make links
 echo "Creating symlinks"
@@ -68,6 +70,8 @@ ln -s $HOME/Copernicus/mako/icons/* $HOME/.config/mako/icons/
 
 ln -s $HOME/Copernicus/tmux.conf $HOME/.tmux.conf
 
+ln -s $HOME/Copernicus/task/taskrc $HOME/.config/task/taskrc
+
 # Set up crontabs
 echo "Adding cron jobs"
 
@@ -76,4 +80,5 @@ echo "Adding cron jobs"
 # Systemd services
 echo "Enabling services"
 
-sudo systemctl enable bluetooth
+sudo systemctl enable bluetooth.service
+systemctl --user enable mpris-proxy.service
