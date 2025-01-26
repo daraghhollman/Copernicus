@@ -27,3 +27,6 @@ vim.cmd('vnoremap <leader>p "_dP')
 
 -- diagnostics window
 vim.cmd('nnoremap <silent> g? <cmd>lua vim.diagnostic.open_float()<CR>')
+
+-- VimWiki
+vim.cmd("let g:vimwiki_list = [{'path':'~/Main/vim_wiki'}]")
