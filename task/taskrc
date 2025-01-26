@@ -1,0 +1,19 @@
+data.location=/home/daraghhollman/Main/.task
+news.version=3.3.0
+
+# Date Settings
+weekstart=Monday
+
+# Urgency Coefficients
+urgency.annotations.coefficient=0
+urgency.project.coefficient=0
+urgency.tags.coefficient=0
+
+urgency.uda.priority.H.coefficient=3
+urgency.uda.priority.M.coefficient=1
+urgency.uda.priority.L.coefficient=-2
+
+urgency.due.coefficient=25
+
+# Limit number of tasks shown on screen
+report.next.filter=+PENDING -BLOCKING limit:20
