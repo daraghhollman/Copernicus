@@ -43,13 +43,13 @@ window#waybar {
 }
 
 #pulseaudio {
-    color: @lime;
+    color: @cornflower;
 }
 #cpu {
     color: @turquoise;
 }
 #memory {
-    color: @seaglass;
+    color: @red;
 }
 #temperature {
     color: @lemon;
@@ -58,7 +58,7 @@ window#waybar {
     color: @flamingo;
 }
 #clock {
-    color: @pink;
+    color: @red;
 }
 #tray button {
     padding-left: 4px;

@@ -4,21 +4,21 @@
 * Author: Chris Kempson (http://chriskempson.com)
 *
 */
-@define-color background   #0e1419;
-@define-color bg-accent    #243340;
-@define-color foreground   #e5e1cf;
-@define-color black        #000000;
-@define-color grey         #323232;
-@define-color red          #ff3333;
-@define-color pale-red     #ff6565;
-@define-color olive        #b8cc52;
-@define-color lime         #e9fe83;
-@define-color sand         #e6c446;
-@define-color lemon        #fff778;
-@define-color cornflower   #36a3d9;
-@define-color blue         #68d4ff;
-@define-color pink         #f07078;
-@define-color flamingo     #ffa3aa;
-@define-color seaglass     #95e5cb;
-@define-color turquoise    #c7fffc;
-@define-color white        #ffffff;
+@define-color background   #232136;
+@define-color bg-accent    #44415a;
+@define-color foreground   #e0def4;
+@define-color black        #393552;
+@define-color grey         #6e6a86;
+@define-color red          #eb6f92;
+@define-color pale-red     #eb6f92;
+@define-color olive        #3e8fb0;
+@define-color lime         #3e8fb0;
+@define-color sand         #f6c177;
+@define-color lemon        #f6c177;
+@define-color cornflower   #9ccfd8;
+@define-color blue         #9ccfd8;
+@define-color pink         #ea9a97;
+@define-color flamingo     #ea9a97;
+@define-color seaglass     #c4a7e7;
+@define-color turquoise    #c4a7e7;
+@define-color white        #e0def4;

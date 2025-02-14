@@ -1,8 +1,8 @@
 format = """
-$python\
 $directory\
 $username\
 $hostname\
+\n $python\
 $git_branch\
 $git_status\
 \n > 
@@ -14,26 +14,26 @@ add_newline = true
 symbol = ' '
 
 [directory]
-style = "fg:bright-cyan bg:#0e1419"
+style = "fg:bold blue bg:#background"
 format = "[ $path ]($style)"
 truncation_length = 5
 truncation_symbol = "…/"
 
 [username]
-style_user = 'fg:#e5e1cf bg:#0e1419'
-style_root = 'fg:red bg:#0e1419'
+style_user = 'fg:bold foreground bg:background'
+style_root = 'fg:red bg:background'
 format = '[$user]($style)'
 disabled = false
 show_always = true
 
 [hostname]
 ssh_only = false
-format = '[@](fg:bold cyan)[$hostname](fg:bold purple bg:#0e1419)'
+format = '[@](fg:bold purple)[$hostname](fg:bold purple bg:background)'
 disabled = false
 
 [env_var]
 variable = 'CONDA_DEFAULT_ENV'
-format = "[ $env_value ](fg:e5e1cf bg:#0e1419)"
+format = "[ $env_value ](fg:e5e1cf bg:background)"
 disabled = false
 default = ''
 
@@ -42,10 +42,10 @@ format = '[(( $virtualenv ))]($style)'
 
 [git_branch]
 symbol = ""
-format = '[[ $symbol $branch ](fg:bright-blue bg:#0e1419)]($style)'
+format = '[[ $symbol $branch ](fg:white bg:background)]($style)'
 
 [git_status]
-format = '[[($all_status$ahead_behind )](fg:purple bg:#0e1419)]($style)'
+format = '[[($all_status$ahead_behind )](fg:white bg:background)]($style)'
 
 [battery]
 full_symbol = '󰁹 '

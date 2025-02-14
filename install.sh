@@ -1,11 +1,11 @@
 # Install packages
 echo "Installing packages"
 
-sudo pacman -Syu wayland waybar hyprland foot ranger aerc newsboat mako wofi zathura zathura-pdf-poppler neovim cronie tree-sitter npm dotnet-sdk unzip ttf-nerd-fonts-symbols starship thefuck zoxide fzf exa network-manager-applet blueman firefox thunar htop hypridle hyprlock pavucontrol pass wl-clipboard wev man pamixer brightnessctl qt5-wayland qt6-wayland batsignal udiskie nwg-displays gvfs slurp swappy grim tmux hyprpaper lazygit obs-studio wireplumber xdg-desktop-portal-hyprland pyqt6 tmux openvpn bluez-utils ripgrep meson cmake cpio qutebrowser task yazi mpv w3m yt-dlp texlive
+sudo pacman -Syu wayland waybar hyprland foot ranger aerc newsboat mako wofi zathura zathura-pdf-poppler neovim cronie tree-sitter npm dotnet-sdk unzip ttf-nerd-fonts-symbols starship thefuck zoxide fzf exa network-manager-applet blueman firefox thunar htop hypridle hyprlock pavucontrol pass wl-clipboard wev man pamixer brightnessctl qt5-wayland qt6-wayland batsignal udiskie nwg-displays gvfs slurp swappy grim tmux hyprpaper lazygit obs-studio wireplumber xdg-desktop-portal-hyprland pyqt6 tmux openvpn bluez-utils ripgrep meson cmake cpio qutebrowser task yazi mpv w3m yt-dlp texlive kitty
 
 sudo pacman -S --needed git base-devel && git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si && cd .. && sudo rm -rf yay/
 
-yay -S ttf-courier-prime zotero hyprshade
+yay -S ttf-courier-prime zotero hyprshade aercbook
 
 sudo npm install -g tree-sitter-cli
 
@@ -19,6 +19,8 @@ mkdir -p $HOME/.config/waybar/scripts/
 mkdir -p $HOME/.config/hypr/
 
 mkdir -p $HOME/.config/foot/
+
+mkdir -p $HOME/.config/kitty/
 
 mkdir -p $HOME/.config/ranger/
 
@@ -36,7 +38,9 @@ mkdir -p $HOME/.config/nvim/
 
 mkdir -p $HOME/.config/mako/icons
 
-mkdir -p $HOME/.config/task
+mkdir -p $HOME/.config/task/
+
+mkdir -p $HOME/.config/wtf/
 
 # Make links
 echo "Creating symlinks"
@@ -49,6 +53,8 @@ ln -s $HOME/Copernicus/hypr/* $HOME/.config/hypr/
 ln -s $HOME/Copernicus/starship.toml $HOME/.config/starship.toml
 
 ln -s $HOME/Copernicus/foot.ini $HOME/.config/foot/foot.ini
+
+ln -s $HOME/Copernicus/kitty/kitty.confg $HOME/.config/kitty/kitty.conf
 
 ln -s $HOME/Copernicus/ranger/* $HOME/.config/ranger/
 
@@ -71,6 +77,8 @@ ln -s $HOME/Copernicus/mako/icons/* $HOME/.config/mako/icons/
 ln -s $HOME/Copernicus/tmux.conf $HOME/.tmux.conf
 
 ln -s $HOME/Copernicus/task/taskrc $HOME/.config/task/taskrc
+
+ln -s $HOME/Copernicus/wtf/* $HOME/.config/wtf/
 
 # Set up crontabs
 echo "Adding cron jobs"
