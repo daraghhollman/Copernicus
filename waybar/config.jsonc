@@ -32,18 +32,18 @@
 	"cpu": {
 		"format": "[ CPU:{usage}% ]",
 		"tooltip": false,
-		"on-click": "foot -F btop"
+		"on-click": "kitty btop"
 	},
 	"memory": {
 		"format": "[ MEM:{percentage}% ]",
-		"on-click": "foot -F btop"
+		"on-click": "kitty btop"
 	},
 	"temperature": {
 		"thermal-zone": 3,
 		"critical-threshold": 90,
 		"format-critical": "[ !{temperatureC}°C! ]",
 		"format": "[ {temperatureC}°C ]",
-		"on-click": "foot -F btop"
+		"on-click": "kitty btop"
 	},
 	"battery": {
 		"format": "[ BAT:{capacity}% ]"
