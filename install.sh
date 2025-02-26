@@ -18,9 +18,9 @@ mkdir -p $HOME/.config/waybar/scripts/
 
 mkdir -p $HOME/.config/hypr/
 
-mkdir -p $HOME/.config/foot/
-
 mkdir -p $HOME/.config/kitty/
+
+mkdir -p $HOME/.config/fish/
 
 mkdir -p $HOME/.config/ranger/
 
@@ -52,9 +52,9 @@ ln -s $HOME/Copernicus/hypr/* $HOME/.config/hypr/
 
 ln -s $HOME/Copernicus/starship.toml $HOME/.config/starship.toml
 
-ln -s $HOME/Copernicus/foot.ini $HOME/.config/foot/foot.ini
-
 ln -s $HOME/Copernicus/kitty/kitty.confg $HOME/.config/kitty/kitty.conf
+
+ln -s $HOME/Copernicus/fish/* $HOME/.config/fish/
 
 ln -s $HOME/Copernicus/ranger/* $HOME/.config/ranger/
 

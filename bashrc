@@ -1,21 +1,12 @@
-#
-# ~/.bashrc
-#
-
-# DOFILES SETUP + AUTOCOMPLETE FOR ALIAS
-source /usr/share/bash-completion/completions/git
-__git_complete dotfiles __git_main
-
-bind -s 'set completion-ignore-case on'
-
-alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
-
-# Append to history
-shopt -s histappend
-
 
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
+
+export BROWSER=firefox
+
+# Append to history
+shopt -s histappend
+export PROMPT_COMMAND="history -a; history -n"
 
 ### ALIASES ###
 # General
@@ -37,35 +28,27 @@ alias yt='yt-dlp --add-metadata -i'
 alias yta='yt -x -f bestaudio/best'
 alias paper="python ~/Main/Projects/NowADS/nowADS.py"
 alias fetch="/home/daraghhollman/Main/scripts/infoDisplay.sh"
-alias backup="sudo rsync -auP --delete /home/daraghhollman/ /run/media/daraghhollman/SanDisk-Daragh/Kepler_Home/"
-alias onlineBackup='read -s -p "Remote sudo password: " SUDOPASS && rsync -auP --delete --stats --rsync-path="echo $SUDOPASS | sudo -Sv && sudo rsync" /home/daraghhollman/ daraghhollman@192.168.0.73:/media/root/Backups/Copernicus_Home/'
-
-# Virual Environments
-alias jupt="source ~/Main/Work/jupiter/jupt/bin/activate"
-alias cometPy="source /home/daraghhollman/Main/CometsThesis/Python/cometPy/bin/activate"
-alias mupt="source ~/Main/envs/mupt/bin/activate"
-alias manim_venv="source ~/Main/envs/manim/bin/activate"
-alias polsim="source ~/Main/envs/polsim/bin/activate"
+alias kepler_backup="rsync -a --delete --info=progress2 -v --exclude '.cache/' -e 'ssh -p 22001' /home/daraghhollman/ daraghhollman@79.97.106.33:/storage/kepler_backup/"
 
 # Software
-alias godot='godot-mono --display-driver wayland & disown'
 alias fnv='nvim $(fzf --preview="bat --color=always {}")'
-alias aurora="cd /home/daraghhollman/Installations/Aurora4x/; FONT_NAME="FreeSerif" FONT_SIZE=9 SCALEHACKX=1 SCALEHACKY=1 MONO_IOMAP=all mono Aurora.exe"
 alias hss='hugo server --noHTTPCache'
 
-# Navigation
-alias comets="cd /home/daraghhollman/Main/CometsThesis/; source ./Python/cometPy/bin/activate"
-alias thesis="cd /home/daraghhollman/Main/CometsThesis/Writing/Thesis; evince main.pdf & nvim ./main.tex"
-alias spade="cd /home/daraghhollman/Main/Projects/SPADE/; source /home/daraghhollman/Main/envs/spade_testing/bin/activate"
-alias website="cd /home/daraghhollman/Main/Projects/personal/daraghhollman.github.io/; nvim index.html"
+# View vimwiki
+alias vimwiki="$BROWSER /home/daraghhollman/Main/vim_wiki_html/index.html"
 
 # Other
-alias pylint="pylint --rcfile /home/daraghhollman/.config/pylintrc"
 alias diasvpn="sudo openvpn --config /home/daraghhollman/Main/Work/vpn/dhollman.ovpn"
 
 # Appearance
-alias light="gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita'"
-alias dark="gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita-dark'"
+alias light="gsettings set org.gnome.desktop.interface gtk-theme 'rose-pine-dawn-gtk'"
+alias dark="gsettings set org.gnome.desktop.interface gtk-theme 'rose-pine-moon-gtk'"
+
+eval "$(starship init bash)"
+eval "$(thefuck --alias)"
+eval "$(zoxide init bash)"
+eval "$(fzf --bash)"
+
 
 ### FUNCTIONS ###
 # Open pdfs
@@ -82,13 +65,8 @@ function y() {
 	rm -f -- "$tmp"
 }
 
-### OTHER ###
-eval "$(starship init bash)"
-eval "$(thefuck --alias)"
-eval "$(zoxide init bash)"
-eval "$(fzf --bash)"
-
 ### CLEANUP ###
+export R_LIBS_USER="/home/daraghhollman/.r/"
 export XDG_CONFIG_HOME="$HOME/.config/"
 export GRIPHOME="$XDG_CONFIG_HOME/grip"
 export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="$XDG_CONFIG_HOME"/java
@@ -121,3 +99,5 @@ export PATH="/usr/local/texlive/2023/bin/x86_64-linux:$PATH"
 export PATH="$HOME/Main/Installations/jabref/build/image/bin/:$PATH"
 export PATH="$HOME/.cargo/bin/:$PATH"
 export PATH="$BUN_INSTALL/bin:$PATH"
+
+fish
