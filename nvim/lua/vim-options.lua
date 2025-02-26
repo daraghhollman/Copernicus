@@ -10,6 +10,14 @@ vim.g.mapleader = " "
 vim.opt.number = true
 vim.wo.relativenumber = true
 
+-- Switch colour schemes
+vim.keymap.set("n", "<leader>tl", ":colorscheme rose-pine-dawn<CR>")
+vim.keymap.set("n", "<leader>td", ":colorscheme rose-pine-moon<CR>")
+
+-- Centre line on screen when moving up and down pages
+vim.keymap.set("n", "<c-d>", "<c-d>zz")
+vim.keymap.set("n", "<c-u>", "<c-u>zz")
+
 -- Nagigate panes easier
 vim.keymap.set("n", "<c-h>", ":wincmd h<CR>")
 vim.keymap.set("n", "<c-j>", ":wincmd j<CR>")
