@@ -86,3 +86,4 @@ dlp
 texlive
 kitty
 fish
+thunderbird
