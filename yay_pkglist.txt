@@ -1,0 +1,4 @@
+ttf-courier-prime
+zotero
+hyprshade
+aercbook

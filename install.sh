@@ -1,12 +1,13 @@
-# Install packages
+# Script must be run from Copernicus base dir
 echo "Installing packages"
+sudo pacman -Syu - ./pkglist.txt
 
-sudo pacman -Syu wayland waybar hyprland foot ranger aerc newsboat mako wofi zathura zathura-pdf-poppler neovim cronie tree-sitter npm dotnet-sdk unzip ttf-nerd-fonts-symbols starship thefuck zoxide fzf exa network-manager-applet blueman firefox thunar htop hypridle hyprlock pavucontrol pass wl-clipboard wev man pamixer brightnessctl qt5-wayland qt6-wayland batsignal udiskie nwg-displays gvfs slurp swappy grim tmux hyprpaper lazygit obs-studio wireplumber xdg-desktop-portal-hyprland pyqt6 tmux openvpn bluez-utils ripgrep meson cmake cpio qutebrowser task yazi mpv w3m yt-dlp texlive kitty
-
+echo "Installing yay"
 sudo pacman -S --needed git base-devel && git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si && cd .. && sudo rm -rf yay/
 
-yay -S ttf-courier-prime zotero hyprshade aercbook
+yay -S - ./yay_pkglist.txt 
 
+echo "Other installations"
 sudo npm install -g tree-sitter-cli
 
 # Make directories
@@ -82,7 +83,6 @@ ln -s $HOME/Copernicus/wtf/* $HOME/.config/wtf/
 
 # Set up crontabs
 echo "Adding cron jobs"
-
 (crontab -l 2>/dev/null; echo "*/20 * * * * /usr/bin/newsboat -x reload") | crontab -
 
 # Systemd services

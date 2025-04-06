@@ -100,4 +100,4 @@ export PATH="$HOME/Main/Installations/jabref/build/image/bin/:$PATH"
 export PATH="$HOME/.cargo/bin/:$PATH"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
-fish
+exec fish
