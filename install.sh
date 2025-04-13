@@ -90,3 +90,6 @@ echo "Enabling services"
 
 sudo systemctl enable bluetooth.service
 systemctl --user enable mpris-proxy.service
+
+# Setup nvim
+git clone https://github.com/daraghhollman/my.nvim "${XDG_CONFIG_HOME"/nvim
