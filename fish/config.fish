@@ -16,6 +16,8 @@ abbr --add diasvpn "sudo openvpn --config /home/daraghhollman/Main/Work/vpn/dhol
 abbr light "gsettings set org.gnome.desktop.interface gtk-theme 'rose-pine-dawn-gtk'"
 abbr dark "gsettings set org.gnome.desktop.interface gtk-theme 'rose-pine-moon-gtk'"
 
+abbr hss "hugo server --noHTTPCache"
+
 abbr --add kepler_backup "rsync -a --delete --info=progress2 -v --exclude '.cache/' --exclude 'CacheStorage/' --exclude 'cache/' -e 'ssh -p 22001' /home/daraghhollman/ daraghhollman@79.97.106.33:/storage/kepler_backup/"
 
 # YAZI
