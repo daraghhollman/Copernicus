@@ -1,0 +1,10 @@
+#!/usr/bin/sh
+
+systemctl is-active --user --quiet kanata && {
+	notify-send "Stopping Kanata"
+	systemctl stop --user kanata
+} || {
+	notify-send "Starting Kanata"
+	systemctl start --user kanata
+}
+

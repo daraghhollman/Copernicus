@@ -94,6 +94,7 @@ eval "$(pyenv virtualenv-init -)"
 
 ### PATH ###
 export PATH="$HOME/Main/scripts:$PATH"
+export PATH="$HOME/Copernicus/scripts/:$PATH"
 export PATH="$HOME/Main/scripts/tmux:$PATH"
 export PATH="/usr/local/texlive/2023/bin/x86_64-linux:$PATH"
 export PATH="$HOME/Main/Installations/jabref/build/image/bin/:$PATH"
