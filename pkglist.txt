@@ -87,3 +87,4 @@ texlive
 kitty
 fish
 thunderbird
+rofimoji
