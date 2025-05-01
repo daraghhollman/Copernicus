@@ -2,7 +2,7 @@ format = """
 $directory\
 $username\
 $hostname\
-\n $python\
+$python\
 $git_branch\
 $git_status\
 \n > 

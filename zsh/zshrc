@@ -1,0 +1,83 @@
+# Daragh Hollman's config for the zoomer shell
+
+
+# Enable Colours
+autoload -U colors && colors
+
+# Enable history and place in cache
+HISTSIZE=10000
+SAVEHIST=10000
+HISTFILE=~/.cache/zsh/history
+
+# Tab comletions
+autoload -U compinit
+zstyle ':completion:*' menu select
+zmodload zsh/complist
+compinit
+_comp_options+=(globdots) # Include dot files
+
+# Use vim keys in tab complete menu:
+bindkey -M menuselect 'h' vi-backward-char
+bindkey -M menuselect 'k' vi-up-line-or-history
+bindkey -M menuselect 'l' vi-forward-char
+bindkey -M menuselect 'j' vi-down-line-or-history
+
+# Vim mode
+bindkey -v
+export KEYTIMEOUT=1
+
+# Edit command in vim buffer
+autoload edit-command-line; zle -N edit-command-line
+bindkey "^e" edit-command-line
+
+# Yazi moves directory
+function y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	yazi "$@" --cwd-file="$tmp"
+	if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+		builtin cd -- "$cwd"
+	fi
+	rm -f -- "$tmp"
+}
+bindkey "^o" y
+
+# ENV VARS
+EDITOR=nvim
+
+# ALIASES
+alias grep='grep --color=auto'
+
+alias ls="exa"
+alias ll="exa -la"
+
+alias ..='cd ..'
+alias ...='cd ..; cd ..'
+alias ....='cd ..; cd ..; cd ..'
+alias .....='cd ..; cd ..; cd ..; cd ..;'
+
+alias gst='git status'
+
+alias kepler_backup="rsync -a --delete --info=progress2 -v --exclude '.cache/' -e 'ssh -p 22001' /home/daraghhollman/ daraghhollman@79.97.106.33:/storage/kepler_backup/"
+
+alias hss='hugo server --noHTTPCache'
+
+alias diasvpn="sudo openvpn --config /home/daraghhollman/Main/Work/vpn/dhollman.ovpn"
+
+alias light="gsettings set org.gnome.desktop.interface gtk-theme 'rose-pine-dawn-gtk'"
+alias dark="gsettings set org.gnome.desktop.interface gtk-theme 'rose-pine-moon-gtk'"
+
+# Append to path
+path+=("$HOME/Copernicus/scripts/")
+export PATH
+
+# pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init - zsh)"
+
+# Set prompt
+eval "$(starship init zsh)"
+eval "$(zoxide init zsh)"
+
+# Add syntax highlighting
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
