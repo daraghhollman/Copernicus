@@ -1,5 +1,0 @@
-# Profile will run at login
-
-# Directory Clean Up
-export ZDOTDIR="$HOME/.config/zsh"
-export QMK_HOME="/home/daraghhollman/Main/qmk_firmware/"
