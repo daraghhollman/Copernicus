@@ -13,8 +13,6 @@ sudo npm install -g tree-sitter-cli
 # Make directories
 echo "Making directories"
 
-mkdir -p $HOME/.config/
-mkdir -p $HOME/.config/waybar/
 mkdir -p $HOME/.config/waybar/scripts/
 
 mkdir -p $HOME/.config/hypr/
@@ -42,6 +40,8 @@ mkdir -p $HOME/.config/mako/icons
 mkdir -p $HOME/.config/task/
 
 mkdir -p $HOME/.config/wtf/
+
+mkdir -p $HOME/.config/zsh/
 
 # Make links
 echo "Creating symlinks"
@@ -80,6 +80,9 @@ ln -s $HOME/Copernicus/tmux.conf $HOME/.tmux.conf
 ln -s $HOME/Copernicus/task/taskrc $HOME/.config/task/taskrc
 
 ln -s $HOME/Copernicus/wtf/* $HOME/.config/wtf/
+
+ln -s $HOME/Copernicus/zsh/zshrc $HOME/.config/zsh/.zshrc
+ln -s $HOME/Copernicus/zsh/zshenv $HOME/.zshenv
 
 # Set up crontabs
 echo "Adding cron jobs"
