@@ -42,6 +42,8 @@ mkdir -p $HOME/.config/task/
 mkdir -p $HOME/.config/wtf/
 
 mkdir -p $HOME/.config/zsh/
+sudo mkdir -p /usr/share/zsh/plugins/zsh-fzf-history-search/
+
 
 # Make links
 echo "Creating symlinks"
@@ -83,6 +85,7 @@ ln -s $HOME/Copernicus/wtf/* $HOME/.config/wtf/
 
 ln -s $HOME/Copernicus/zsh/zshrc $HOME/.config/zsh/.zshrc
 ln -s $HOME/Copernicus/zsh/zshenv $HOME/.zshenv
+sudo ln -s $HOME/Copernicus/zsh/zsh-fzf-history-search/zsh-fzf-history-search.zsh /usr/share/zsh/plugins/zsh-fzf-history-search/zsh-fzf-history-search.zsh
 
 # Set up crontabs
 echo "Adding cron jobs"

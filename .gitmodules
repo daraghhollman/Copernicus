@@ -1,3 +1,6 @@
 [submodule "yay"]
 	path = yay
 	url = https://github.com/Jguer/yay
+[submodule "zsh/zsh-fzf-history-search"]
+	path = zsh/zsh-fzf-history-search
+	url = https://github.com/joshskidmore/zsh-fzf-history-search

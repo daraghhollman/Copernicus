@@ -8,6 +8,11 @@ autoload -U colors && colors
 HISTSIZE=10000
 SAVEHIST=10000
 HISTFILE=~/.cache/zsh/history
+setopt INC_APPEND_HISTORY # All shell sessions append to history after exiting
+setopt HIST_IGNORE_DUPS # Consecutive repeated lines are ignored
+
+# Correct mistyped commands
+setopt CORRECT
 
 # Tab comletions
 autoload -U compinit
@@ -39,10 +44,11 @@ function y() {
 	fi
 	rm -f -- "$tmp"
 }
+zle -N y
 bindkey "^o" y
 
 # ENV VARS
-EDITOR=nvim
+export EDITOR=nvim
 
 # ALIASES
 alias grep='grep --color=auto'
@@ -50,6 +56,7 @@ alias grep='grep --color=auto'
 alias ls="exa"
 alias ll="exa -la"
 
+setopt AUTO_CD
 alias ..='cd ..'
 alias ...='cd ..; cd ..'
 alias ....='cd ..; cd ..; cd ..'
@@ -78,6 +85,12 @@ eval "$(pyenv init - zsh)"
 # Set prompt
 eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
+
+# Search history with ctrl-r
+source /usr/share/zsh/plugins/zsh-fzf-history-search/zsh-fzf-history-search.zsh
+
+# Auto suggestions
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # Add syntax highlighting
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
