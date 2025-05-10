@@ -52,7 +52,7 @@
 		// "scroll-step": 1, // %, can be a float
 		"format": "[ VOL:{volume}% ]",
 		"format-muted": "[ VOL: M ]",
-		"on-click": "pavucontrol"
+		"on-click": "GTK_THEME=Adwatia pavucontrol"
 	},
 	"hyprland/window": {
 		"format": "󰣇 [{}]"
