@@ -4,3 +4,6 @@
 [submodule "zsh/zsh-fzf-history-search"]
 	path = zsh/zsh-fzf-history-search
 	url = https://github.com/joshskidmore/zsh-fzf-history-search
+[submodule "pywal/pywal16-libadwaita"]
+	path = pywal/pywal16-libadwaita
+	url = https://github.com/eylles/pywal16-libadwaita

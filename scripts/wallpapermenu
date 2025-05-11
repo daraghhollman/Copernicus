@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+WALLPAPER_DIRECTORY=$HOME/Photos/Wallpapers/
+
+# Selec wallpaper from above directory
+# Mark selection with 'm'
+CHOICE=$(nsxiv -otb $WALLPAPER_DIRECTORY)
+
+# Generate colours
+if [ "$1" = "-l" ]; then
+	echo "GENERATING LIGHT THEME!"
+	wal -i "$CHOICE" -l
+
+else
+	echo "GENERATING DARK THEME!"
+	wal -i "$CHOICE"
+fi
+
+# Waybar needs to be refreshed to change colours
+killall waybar; waybar
+
+# Set mozilla stuff
+pywalfox update
