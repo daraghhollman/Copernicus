@@ -1,5 +1,6 @@
 # Daragh Hollman's config for the zoomer shell
 
+(cat ~/.cache/wal/sequences &) # Colours from wal
 
 # Enable Colours
 autoload -U colors && colors
@@ -51,6 +52,8 @@ bindkey "^o" y
 export EDITOR=nvim
 
 # ALIASES
+alias zsh_compile='zcompile'
+
 alias grep='grep --color=auto'
 
 alias ls="exa"
@@ -64,7 +67,7 @@ alias .....='cd ..; cd ..; cd ..; cd ..;'
 
 alias gst='git status'
 
-alias kepler_backup="rsync -a --delete --info=progress2 -v --exclude '.cache/' -e 'ssh -p 22001' /home/daraghhollman/ daraghhollman@79.97.106.33:/storage/kepler_backup/"
+alias kepler_backup="rsync -a --delete --info=progress2 -v --exclude '.cache/' --exclude '.config/Slack/' --exclude '.local/share/recently-used.xbel' -e 'ssh -p 22001' /home/daraghhollman/ daraghhollman@79.97.106.33:/storage/kepler_backup/"
 
 alias hss='hugo server --noHTTPCache'
 

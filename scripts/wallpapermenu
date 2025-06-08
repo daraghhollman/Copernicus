@@ -9,12 +9,14 @@ CHOICE=$(nsxiv -otb $WALLPAPER_DIRECTORY)
 # Generate colours
 if [ "$1" = "-l" ]; then
 	echo "GENERATING LIGHT THEME!"
-	wal -i "$CHOICE" -l
+	wal -i "$CHOICE" -l --cols16 -n
 
 else
 	echo "GENERATING DARK THEME!"
-	wal -i "$CHOICE"
+	wal -i "$CHOICE" --cols16 -n
 fi
+
+hyprctl hyprpaper reload ,"$CHOICE"
 
 # Waybar needs to be refreshed to change colours
 killall waybar; waybar

@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+
+killall waybar
+
+# Generate colors and set wallpaper with wal
+wal -i ~/Photos/Wallpapers/ -n
+#
+# Wait for pywal to finish fully
+while [ ! -f "${HOME}/.cache/wal/colors-waybar.css" ]; do
+    sleep 0.1
+done
+
+# Start hyprpaper
+hyprpaper &
+
+# Wait a bit to ensure hyprpaper starts and wal finishes
+sleep 1
+
+# Load the wallpaper path
+WALLPAPER=$(< "${HOME}/.cache/wal/wal")
+
+# Apply the wallpaper using hyprctl
+hyprctl hyprpaper reload ,"$WALLPAPER"
+waybar &
