@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# Grep returns an exit code so we can use it to check if waybar is running
+ps cax | grep -w waybar
+
+# Check the exit code of the last executed command
+if [ $? -eq 0 ]; then
+	killall waybar
+
+else
+	waybar &
+
+fi
