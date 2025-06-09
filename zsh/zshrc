@@ -76,6 +76,11 @@ alias diasvpn="sudo openvpn --config /home/daraghhollman/Main/Work/vpn/dhollman.
 alias light="gsettings set org.gnome.desktop.interface gtk-theme 'rose-pine-dawn-gtk'"
 alias dark="gsettings set org.gnome.desktop.interface gtk-theme 'rose-pine-moon-gtk'"
 
+# Download from youtube
+alias yt='yt-dlp --add-metadata -i'
+alias yta='yt -x -f bestaudio/best'
+alias ytp='yt --yes-playlist -x --audio-format best --audio-quality 0 --embed-metadata --embed-thumbnail --output "%(playlist_index)02d - %(title)s.%(ext)s"'
+
 # Append to path
 path+=("$HOME/Copernicus/scripts/")
 export PATH
