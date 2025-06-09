@@ -1,0 +1,46 @@
+#!/bin/bash
+
+titles_file="$1"
+
+if [ ! -f "$titles_file" ]; then
+    echo "Missing titles file. Usage: $0 titles.txt"
+    exit 1
+fi
+
+echo "Enter the album title:"; read -r album
+echo "Enter the artist name:"; read -r artist
+echo "Enter the publication year:"; read -r year
+
+escalbum="$(echo "$album" | iconv -c -f UTF-8 -t ASCII//TRANSLIT | tr -d '[:punct:]' | tr '[:upper:]' '[:lower:]' | tr ' ' '-' | sed 's/-\+/-/g;s/^-//;s/-$//')"
+
+mkdir -p "$escalbum" || { echo "Cannot create directory"; exit 1; }
+
+mapfile -t titles < "$titles_file"
+
+shopt -s nullglob
+files=( *.m4a *.webm *.opus *.mp3 )
+num_files=${#files[@]}
+num_titles=${#titles[@]}
+
+if (( num_files != num_titles )); then
+    echo "Warning: Number of downloaded files ($num_files) does not match number of titles ($num_titles)"
+fi
+
+for ((i=0; i<${#files[@]}; i++)); do
+    f="${files[$i]}"
+    [ -e "$f" ] || continue
+
+    ext="${f##*.}"
+    track_num=$((i + 1))
+    title="${titles[$i]}"
+    esctitle="$(echo "$title" | iconv -c -f UTF-8 -t ASCII//TRANSLIT | tr -d '[:punct:]' | tr '[:upper:]' '[:lower:]' | tr ' ' '-' | sed 's/-\+/-/g;s/^-//;s/-$//')"
+    outfile="$escalbum/$(printf "%02d" "$track_num")-$esctitle.$ext"
+
+    ffmpeg -i "$f" -y \
+        -metadata title="$title" \
+        -metadata artist="$artist" \
+        -metadata album="$album" \
+        -metadata year="$year" \
+        -metadata track="$track_num" \
+        -c copy "$outfile"
+done
