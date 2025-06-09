@@ -7,6 +7,9 @@
         "tray",
         "hyprland/window"
     ],
+	"modules-center": [
+		"mpd",
+	],
 	"modules-right": [
 		"cpu",
 		"memory",
@@ -57,8 +60,33 @@
 	"hyprland/window": {
 		"format": "󰣇 [{}]"
 	},
-    "backlight": {
-        "device": "intel_backlight",
-        "format": "[ BRI:{percent}% ]"
-    },
+	"backlight": {
+		"device": "intel_backlight",
+		"format": "[ BRI:{percent}% ]"
+	},
+	"mpd": {
+	"format": "{stateIcon} {artist} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ",
+	"format-disconnected": "",
+	"format-stopped": "",
+	"interval": 0.5,
+	"consume-icons": {
+		"on": " " // Icon shows only when "consume" is on
+	},
+	"random-icons": {
+		"off": "<span color='#f53c3c'></span> ", // Icon grayed out when "random" is off
+		"on": " "
+	},
+	"repeat-icons": {
+		"on": " "
+	},
+	"single-icons": {
+		"on": "1 "
+	},
+	"state-icons": {
+		"paused": "",
+		"playing": ""
+	},
+	"tooltip-format": "MPD (connected)",
+	"tooltip-format-disconnected": "MPD (disconnected)",
+	},
 }
