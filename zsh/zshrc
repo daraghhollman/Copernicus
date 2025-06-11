@@ -81,6 +81,11 @@ alias yt='yt-dlp --add-metadata -i'
 alias yta='yt -x -f bestaudio/best'
 alias ytp='yt --yes-playlist -x --audio-format best --audio-quality 0 --embed-metadata --embed-thumbnail --output "%(playlist_index)02d - %(title)s.%(ext)s"'
 
+# Papis helper functions
+bibexport() {
+	papis export --format bibtex $1 | wl-copy
+}
+
 # Append to path
 path+=("$HOME/Copernicus/scripts/")
 export PATH
