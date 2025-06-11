@@ -1,4 +1,3 @@
-# Script must be run from Copernicus base dir
 echo "Installing packages"
 sudo pacman -Syu - ./pkglist.txt
 
