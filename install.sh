@@ -1,5 +1,5 @@
 echo "Installing packages"
-sudo pacman -Syu - ./pkglist.txt
+sudo pacman -Syu --needed - ./pkglist.txt
 
 echo "Installing yay"
 sudo pacman -S --needed git base-devel && git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si && cd .. && sudo rm -rf yay/
