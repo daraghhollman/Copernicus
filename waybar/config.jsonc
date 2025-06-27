@@ -3,10 +3,10 @@
 	// try to keep it 4px across the config
 	"height": 25,
 	"modules-left": [
-        "hyprland/workspaces",
-        "tray",
-        "hyprland/window"
-    ],
+		"hyprland/workspaces",
+		"tray",
+		"hyprland/window"
+	],
 	"modules-center": [
 		"mpd",
 	],
@@ -14,15 +14,15 @@
 		"cpu",
 		"memory",
 		"pulseaudio",
-        "backlight",
+		"backlight",
 		"temperature",
 		"battery",
 		"clock"
 	],
 
 	/*
-    MODULES
-    */
+MODULES
+*/
 	"tray": {
 		"spacing": 10,
 		"icon-size": 14
@@ -65,28 +65,33 @@
 		"format": "[ BRI:{percent}% ]"
 	},
 	"mpd": {
-	"format": "{stateIcon} {artist} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ",
-	"format-disconnected": "",
-	"format-stopped": "",
-	"interval": 0.5,
-	"consume-icons": {
-		"on": " " // Icon shows only when "consume" is on
+		"format": "{stateIcon} {artist} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ",
+		"format-disconnected": "",
+		"format-stopped": "",
+		"interval": 0.5,
+		"consume-icons": {
+			"on": " " // Icon shows only when "consume" is on
+		},
+		"random-icons": {
+			"off": "<span color='#f53c3c'></span> ", // Icon grayed out when "random" is off
+			"on": " "
+		},
+		"repeat-icons": {
+			"on": " "
+		},
+		"single-icons": {
+			"on": "1 "
+		},
+		"state-icons": {
+			"paused": "",
+			"playing": ""
+		},
+		"tooltip-format": "MPD (connected)",
+		"tooltip-format-disconnected": "MPD (disconnected)",
 	},
-	"random-icons": {
-		"off": "<span color='#f53c3c'></span> ", // Icon grayed out when "random" is off
-		"on": " "
+	"custom/phd_timer": {
+		"interval": "once",
+		"exec": "months_left_in_phd █ │"
 	},
-	"repeat-icons": {
-		"on": " "
-	},
-	"single-icons": {
-		"on": "1 "
-	},
-	"state-icons": {
-		"paused": "",
-		"playing": ""
-	},
-	"tooltip-format": "MPD (connected)",
-	"tooltip-format-disconnected": "MPD (disconnected)",
-	},
+
 }

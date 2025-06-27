@@ -46,23 +46,23 @@ window#waybar {
 }
 
 #cpu {
-    color: @color1;
+    color: @foreground;
 }
 #memory {
-    color: @color2;
+    color: @foreground;
 }
 #pulseaudio {
-    color: @color3;
+    color: @foreground;
 }
 #backlight {
-    color: @color4;
+    color: @foreground;
 }
 #temperature {
-    color: @color5;
+    color: @foreground;
 }
 #battery {
-    color: @color6;
+    color: @foreground;
 }
 #clock {
-    color: @color7;
+    color: @foreground;
 }

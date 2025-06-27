@@ -1,10 +1,23 @@
-# Daragh Hollman's config for the zoomer shell
+# ----------------  Path Config -------------------- #
 
-(cat ~/.cache/wal/sequences &) # Colours from wal
+path=(
+    $path
+    $HOME/Copernicus/scripts/
+)
+
+# Remove any duplicates
+typeset -U path
+path=($^path(N-/))
+
+export PATH
+
+# ----------------- Zsh Options -------------------- #
+
+set -o vi
 
 # Enable Colours
 autoload -U colors && colors
-
+#
 # Enable history and place in cache
 HISTSIZE=10000
 SAVEHIST=10000
@@ -12,8 +25,25 @@ HISTFILE=~/.cache/zsh/history
 setopt INC_APPEND_HISTORY # All shell sessions append to history after exiting
 setopt HIST_IGNORE_DUPS # Consecutive repeated lines are ignored
 
-# Correct mistyped commands
-setopt CORRECT
+# Edit command in vim buffer
+autoload edit-command-line; zle -N edit-command-line
+bindkey "^e" edit-command-line
+
+# ------------ Environement Variables -------------- #
+
+export VISUAL=nvim
+export EDITOR=nvim
+
+export BROWSER=qutebrowser
+
+export TERM="tmux-256color"
+
+# pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+export PYENV_VIRTUALENV_DISABLE_PROMPT=1
+
+# ------------------- Plugins ---------------------- #
 
 # Tab comletions
 autoload -U compinit
@@ -28,13 +58,56 @@ bindkey -M menuselect 'k' vi-up-line-or-history
 bindkey -M menuselect 'l' vi-forward-char
 bindkey -M menuselect 'j' vi-down-line-or-history
 
-# Vim mode
-bindkey -v
-export KEYTIMEOUT=1
+(cat ~/.cache/wal/sequences &) # Colours from wal
 
-# Edit command in vim buffer
-autoload edit-command-line; zle -N edit-command-line
-bindkey "^e" edit-command-line
+# Search history with ctrl-r
+source /usr/share/zsh/plugins/zsh-fzf-history-search/zsh-fzf-history-search.zsh
+
+# Auto suggestions
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+# Add syntax highlighting
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# ------------------ Aliases --------------------- #
+
+alias open="xdg-open"
+# Setting defaults for opening
+xdg-mime default swayimg.desktop image/jpeg
+xdg-mime default swayimg.desktop image/png
+# More to be added as we come across them
+
+alias grep='grep --color=auto'
+
+alias ls="exa"
+
+alias ..='cd ..'
+alias ...='cd ..; cd ..'
+alias ....='cd ..; cd ..; cd ..'
+alias .....='cd ..; cd ..; cd ..; cd ..;'
+
+alias gst='git status'
+
+alias kepler_backup="rsync -a --delete --info=progress2 -v --exclude '.cache/' --exclude '.config/Slack/' --exclude '.local/share/recently-used.xbel' -e 'ssh -p 22001' /home/daraghhollman/ daraghhollman@79.97.106.33:/storage/kepler_backup/"
+
+alias hss='hugo server --noHTTPCache'
+alias hsd='hugo server -D'
+
+alias diasvpn="sudo openvpn --config /home/daraghhollman/Main/Work/vpn/dhollman.ovpn"
+
+# Download from youtube
+alias yt='yt-dlp --add-metadata -i'
+alias yta='yt -x -f bestaudio/best'
+alias ytp='yt --yes-playlist -x --audio-format best --audio-quality 0 --embed-metadata --embed-thumbnail --output "%(playlist_index)02d - %(title)s.%(ext)s"'
+
+# Papis helper functions
+bibexport() {
+	papis export --format bibtex $1 | wl-copy
+}
+library_backup() {
+	papis git commit -a
+	papis git push
+}
 
 # Yazi moves directory
 function y() {
@@ -48,62 +121,14 @@ function y() {
 zle -N y
 bindkey "^o" y
 
-# ENV VARS
-export EDITOR=nvim
+# Defer pyenv init until needed
+pyenv() {
+	eval "$(command pyenv init - zsh)"
+	eval "$(command pyenv virtualenv-init - zsh)"
 
-# ALIASES
-alias zsh_compile='zcompile'
-
-alias grep='grep --color=auto'
-
-alias ls="exa"
-alias ll="exa -la"
-
-setopt AUTO_CD
-alias ..='cd ..'
-alias ...='cd ..; cd ..'
-alias ....='cd ..; cd ..; cd ..'
-alias .....='cd ..; cd ..; cd ..; cd ..;'
-
-alias gst='git status'
-
-alias kepler_backup="rsync -a --delete --info=progress2 -v --exclude '.cache/' --exclude '.config/Slack/' --exclude '.local/share/recently-used.xbel' -e 'ssh -p 22001' /home/daraghhollman/ daraghhollman@79.97.106.33:/storage/kepler_backup/"
-
-alias hss='hugo server --noHTTPCache'
-
-alias diasvpn="sudo openvpn --config /home/daraghhollman/Main/Work/vpn/dhollman.ovpn"
-
-alias light="gsettings set org.gnome.desktop.interface gtk-theme 'rose-pine-dawn-gtk'"
-alias dark="gsettings set org.gnome.desktop.interface gtk-theme 'rose-pine-moon-gtk'"
-
-# Download from youtube
-alias yt='yt-dlp --add-metadata -i'
-alias yta='yt -x -f bestaudio/best'
-alias ytp='yt --yes-playlist -x --audio-format best --audio-quality 0 --embed-metadata --embed-thumbnail --output "%(playlist_index)02d - %(title)s.%(ext)s"'
-
-# Papis helper functions
-bibexport() {
-	papis export --format bibtex $1 | wl-copy
+	pyenv "$@"
 }
 
-# Append to path
-path+=("$HOME/Copernicus/scripts/")
-export PATH
-
-# pyenv
-export PYENV_ROOT="$HOME/.pyenv"
-[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init - zsh)"
-
 # Set prompt
-eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
-
-# Search history with ctrl-r
-source /usr/share/zsh/plugins/zsh-fzf-history-search/zsh-fzf-history-search.zsh
-
-# Auto suggestions
-source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-
-# Add syntax highlighting
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+eval "$(starship init zsh)"

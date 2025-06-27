@@ -1,0 +1,52 @@
+#!/bin/bash
+
+# Define a list of accented characters and their descriptions
+chars=$(cat <<EOF
+á  (a acute)
+à  (a grave)
+â  (a circumflex)
+ä  (a umlaut)
+ã  (a tilde)
+å  (a ring)
+æ  (ae ligature)
+ç  (c cedilla)
+é  (e acute)
+è  (e grave)
+ê  (e circumflex)
+ë  (e umlaut)
+í  (i acute)
+ì  (i grave)
+ï  (i umlaut)
+ñ  (n tilde)
+ó  (o acute)
+ò  (o grave)
+ô  (o circumflex)
+ö  (o umlaut)
+õ  (o tilde)
+ø  (o stroke)
+ú  (u acute)
+ù  (u grave)
+û  (u circumflex)
+ü  (u umlaut)
+ý  (y acute)
+ÿ  (y umlaut)
+œ  (oe ligature)
+ß  (eszett)
+¿  (inverted question mark)
+¡  (inverted exclamation mark)
+EOF
+)
+
+chosen=$(echo "$chars" | rofi -dmenu -p "Select char:")
+char=$(echo "$chosen" | awk '{print $1}')
+
+if command -v xclip &> /dev/null; then
+  echo -n "$char" | xclip -selection clipboard
+elif command -v wl-copy &> /dev/null; then
+  echo -n "$char" | wl-copy
+else
+  notify-send "No clipboard tool found (xclip or wl-copy)"
+  exit 1
+fi
+
+notify-send "Copied to clipboard: $char"

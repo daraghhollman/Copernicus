@@ -1,0 +1,56 @@
+#!/bin/bash
+
+TARGET_DATE="2028-09-01"     # your target date
+TOTAL_WEEKS=208           # total duration in weeks
+BAR_LENGTH=20                # visual bar length
+
+# Get today's and target dates in seconds since epoch
+current_date=$(date +%s)
+target_date=$(date -d "$TARGET_DATE" +%s)
+
+# Exit if target date is in the past
+if [ "$target_date" -lt "$current_date" ]; then
+    echo "Target date is in the past."
+    exit 1
+fi
+
+SECONDS_IN_WEEK=$((7 * 24 * 60 * 60))
+
+total_seconds_left=$((target_date - current_date))
+weeks_left=$((total_seconds_left / SECONDS_IN_WEEK))
+weeks_elapsed=$((TOTAL_WEEKS - weeks_left))
+
+[ "$weeks_elapsed" -lt 0 ] && weeks_elapsed=0
+[ "$weeks_elapsed" -gt "$TOTAL_WEEKS" ] && weeks_elapsed=$TOTAL_WEEKS
+
+progress=$((weeks_elapsed * 100 / TOTAL_WEEKS))
+
+filled=$((BAR_LENGTH * progress / 100))
+empty=$((BAR_LENGTH - filled))
+
+# Default bar characters
+FILLED_CHAR="#"
+EMPTY_CHAR="-"
+
+# Read optional arguments for bar characters
+if [ $# -ge 1 ]; then
+    FILLED_CHAR="$1"
+fi
+if [ $# -ge 2 ]; then
+    EMPTY_CHAR="$2"
+fi
+
+repeat_char() {
+    local char="$1"
+    local count="$2"
+    local output=""
+    for ((i=0; i<count; i++)); do
+        output+="$char"
+    done
+    echo -n "$output"
+}
+
+bar="$(repeat_char "$FILLED_CHAR" "$filled")"
+bar+=$(repeat_char "$EMPTY_CHAR" "$empty")
+
+echo "$bar"

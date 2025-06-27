@@ -1,8 +1,9 @@
 format = """
+$python\
+$custom\
 $directory\
 $username\
 $hostname\
-$python\
 $git_branch\
 $git_status\
 \n > 
@@ -38,7 +39,8 @@ disabled = false
 default = ''
 
 [python]
-format = '[(( $virtualenv ))]($style)'
+format = """
+[(  🐍 ($virtualenv)\n)]($style)"""
 
 [git_branch]
 symbol = ""
@@ -68,3 +70,8 @@ time_format = "%T" # Hour:Minute Format
 style = "bg:#0e1419"
 format = '[[ $time](fg:bright-yellow bg:#0e1419)]($style)'
 
+[custom.phd_timer]
+command = "months_left_in_phd ▄  _"
+when = true
+format = "[    $output \n]($style) "
+style = "foreground"
