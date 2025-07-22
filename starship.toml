@@ -1,6 +1,5 @@
 format = """
 $python\
-$custom\
 $directory\
 $username\
 $hostname\
