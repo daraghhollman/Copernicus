@@ -1,4 +1,4 @@
 #!/usr/bin/bash
 
-pacman -Qqe > ~/Copernicus/pkglist.txt
-pacman -Qqm > ~/Copernicus/yay_pkglist.txt
+pacman -Qqe > $HOME/Copernicus/pkglist.txt
+pacman -Qqm > $HOME/Copernicus/yay_pkglist.txt
