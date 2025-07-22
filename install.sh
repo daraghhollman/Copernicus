@@ -43,9 +43,10 @@ mkdir -p $HOME/.config/wtf/
 mkdir -p $HOME/.config/zsh/
 sudo mkdir -p /usr/share/zsh/plugins/zsh-fzf-history-search/
 
+mkdir -p $HOME/.config/qutebrowser/
 
 # Make links
-echo "Creating symlinks"
+echo "$Creating symlinks"
 
 ln -s $HOME/Copernicus/waybar/* $HOME/.config/waybar/
 ln -s $HOME/Copernicus/waybar/scripts/* $HOME/.config/waybar/scripts/
@@ -85,6 +86,8 @@ ln -s $HOME/Copernicus/wtf/* $HOME/.config/wtf/
 ln -s $HOME/Copernicus/zsh/zshrc $HOME/.config/zsh/.zshrc
 ln -s $HOME/Copernicus/zsh/zshenv $HOME/.zshenv
 sudo ln -s $HOME/Copernicus/zsh/zsh-fzf-history-search/zsh-fzf-history-search.zsh /usr/share/zsh/plugins/zsh-fzf-history-search/zsh-fzf-history-search.zsh
+
+ln -s $HOME/Copernicus/qutebrowser/* $HOME/.config/qutebrowser/
 
 # Set up crontabs
 echo "Adding cron jobs"
