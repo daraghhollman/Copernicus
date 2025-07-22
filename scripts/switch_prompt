@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+
+# Script to switch out a starship prompt for a more minimal one
+
+current_prompt=$HOME/.config/starship.toml
+main_prompt=$HOME/.config/starship-main.toml
+minimal_prompt=$HOME/.config/starship-minimal.toml
+state_file=$HOME/.config/startship-state
+
+if [[ ! -f $state_file ]]; then
+		echo "main" > $state_file
+fi
+
+status=$(cat $state_file)
+
+# Check if we are in minimal state
+if [[ "$status" = "minimal" ]]; then
+		cp $main_prompt $current_prompt
+		echo "main" > $state_file
+		echo "Changing to main prompt"
+
+elif [[ "$status" == "main" ]]; then
+		cp $minimal_prompt $current_prompt
+		echo "minimal" > $state_file
+		echo "Changing to minimal prompt"
+
+else
+		echo "State file does not exist, creating"
+		echo "main" > $state_file
+
+fi
