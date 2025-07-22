@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Define a list of accented characters and their descriptions
 chars=$(cat <<EOF
