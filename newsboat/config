@@ -55,3 +55,6 @@ browser firefox
 macro , open-in-browser
 macro y set browser "setsid -f mpv" ; open-in-browser ; set browser firefox
 macro w set browser "w3m" ; open-in-browser ; set browser firefox
+
+# Other
+cleanup-on-quit yes
