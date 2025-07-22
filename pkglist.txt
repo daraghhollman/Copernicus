@@ -71,6 +71,7 @@ lib32-vulkan-intel
 libcamera-debug
 libcamera-docs
 libcamera-tools
+libnss_nis
 libreoffice-fresh
 libvncserver
 linux
@@ -88,6 +89,7 @@ mako
 man-db
 man-pages
 mattermost-desktop
+mdcat
 meson
 mpd
 mpv
@@ -120,11 +122,12 @@ papis
 pass
 passmenu2
 pavucontrol
+pdfjs
 pipewire-libcamera
 pipewire-pulse
 pipewire-v4l2
 pkgstats
-preload
+plocate
 protontricks
 pyenv
 pyenv-virtualenv
@@ -168,6 +171,7 @@ rofi-wayland
 rofimoji
 rpi-imager
 rsync
+rust
 slack-desktop-wayland
 slurp
 speedtest-cli
@@ -225,6 +229,7 @@ ufw
 unarchiver
 unzip
 urlview
+uv
 vi
 vial-appimage
 vim

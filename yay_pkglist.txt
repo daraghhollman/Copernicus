@@ -3,6 +3,7 @@ abook-debug
 alsamixergui
 anydesk-bin
 cbonsai
+cbonsai-debug
 colorz
 debtap
 downgrade
@@ -17,6 +18,7 @@ intel-ipu6-camera-bin
 intel-ipu6-dkms-git
 intel-ivsc-firmware
 kanata
+kanata-debug
 libcamera-debug
 mutt-wizard
 oomox-qt6-styleplugin-git
@@ -24,7 +26,6 @@ pam-gnupg
 panoply
 papis
 passmenu2
-preload
 protontricks
 pyenv-virtualenv
 python-arxiv
@@ -52,5 +53,9 @@ vial-appimage
 wasistlos-appimage
 wpgtk
 wtfutil
+wtfutil-debug
 yay
+yp-tools
+yp-tools-debug
 zotero
+zotero-debug
