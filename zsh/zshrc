@@ -3,6 +3,8 @@
 path=(
     $path
     $HOME/Copernicus/scripts/
+    $HOME/Main/notes/scripts/
+    $HOME/Main/expenses/scripts/
 )
 
 # Remove any duplicates
@@ -33,10 +35,10 @@ bindkey "^e" edit-command-line
 
 export VISUAL=nvim
 export EDITOR=nvim
-
 export BROWSER=qutebrowser
 
-export TERM="tmux-256color"
+export NOTESDIR="$HOME/Main/notes/"
+export EXPENSES_DIR="$HOME/Main/expenses/"
 
 # pyenv
 export PYENV_ROOT="$HOME/.pyenv"
@@ -75,6 +77,7 @@ alias open="xdg-open"
 # Setting defaults for opening
 xdg-mime default swayimg.desktop image/jpeg
 xdg-mime default swayimg.desktop image/png
+xdg-mime default org.pwmt.zathura.desktop application/pdf
 # More to be added as we come across them
 
 alias grep='grep --color=auto'
