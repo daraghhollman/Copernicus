@@ -3,7 +3,7 @@
 killall waybar
 
 # Generate colors and set wallpaper with wal
-wal -i ~/Photos/Wallpapers/ -n
+wal --theme "base16-gruvbox-hard" -i --cols16 ~/Photos/Wallpapers/ -n
 #
 # Wait for pywal to finish fully
 while [ ! -f "${HOME}/.cache/wal/colors-waybar.css" ]; do

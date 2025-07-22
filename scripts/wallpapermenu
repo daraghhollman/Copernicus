@@ -1,22 +1,27 @@
 #!/usr/bin/env bash
 
 WALLPAPER_DIRECTORY=$HOME/Photos/Wallpapers/
+CURRENT_WALLPAPER=$WALLPAPER_DIRECTORY/current_wallpaper
 
 # Selec wallpaper from above directory
 # Mark selection with 'm'
 CHOICE=$(nsxiv -otb $WALLPAPER_DIRECTORY)
 
+THEME="base16-gruvbox-hard"
+
 # Generate colours
 if [ "$1" = "-l" ]; then
 	echo "GENERATING LIGHT THEME!"
-	wal --backend haishoku -i "$CHOICE" -l --cols16 -n
+	wal --theme "$THEME" -i "$CHOICE" -l --cols16 -n
 
 else
 	echo "GENERATING DARK THEME!"
-	wal --backend haishoku -i "$CHOICE" --cols16 -n
+	wal --theme "$THEME" -i "$CHOICE" --cols16 -n
 fi
 
-hyprctl hyprpaper reload ,"$CHOICE"
+cp $CHOICE $CURRENT_WALLPAPER
+
+hyprctl hyprpaper reload ,"$CURRENT_WALLPAPER"
 
 # Waybar needs to be refreshed to change colours
 killall waybar; waybar
