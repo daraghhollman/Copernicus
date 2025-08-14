@@ -1,6 +1,7 @@
 abook
 alsamixergui
 anydesk-bin
+audacity
 base
 base-devel
 bat
@@ -22,7 +23,6 @@ cpio
 cronie
 cups
 cyme
-debtap
 dotnet-sdk
 downgrade
 ds9-bin
@@ -45,7 +45,6 @@ gqrx
 grim
 gst-plugin-libcamera
 gvfs
-hellwal
 htop
 hugo
 hypridle
@@ -53,7 +52,6 @@ hyprland
 hyprlock
 hyprpaper
 hyprpicker
-hyprshade
 inkscape
 intel-compute-runtime
 intel-gpu-tools
@@ -139,6 +137,7 @@ python-haishoku
 python-isort
 python-libcamera
 python-matplotlib
+python-mutagen
 python-numpy
 python-pandas
 python-pip
@@ -173,6 +172,7 @@ rpi-imager
 rsync
 rust
 slack-desktop-wayland
+slack-term
 slurp
 speedtest-cli
 spotify-launcher
@@ -221,7 +221,6 @@ transmission-gtk
 tree
 ttc-iosevka
 ttf-courier-prime
-ttf-font-awesome
 ttf-nerd-fonts-symbols
 typst
 udiskie
@@ -229,7 +228,6 @@ ufw
 unarchiver
 unzip
 urlview
-uv
 vi
 vial-appimage
 vim
@@ -239,11 +237,13 @@ vulkan-tools
 w3m
 wasistlos-appimage
 waybar
+waydroid
 wayland
 wev
 wget
 wireplumber
 wl-clipboard
+woff2-font-awesome
 wpgtk
 wtfutil
 xdg-desktop-portal-hyprland
@@ -294,7 +294,6 @@ yazi
 yt-dlp
 zathura
 zathura-pdf-poppler
-zotero
 zoxide
 zsh
 zsh-autosuggestions
