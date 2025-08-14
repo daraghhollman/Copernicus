@@ -33,7 +33,6 @@ bindkey "^e" edit-command-line
 
 # ------------ Environement Variables -------------- #
 
-export VISUAL=nvim
 export EDITOR=nvim
 export BROWSER=qutebrowser
 
@@ -90,8 +89,9 @@ alias ....='cd ..; cd ..; cd ..'
 alias .....='cd ..; cd ..; cd ..; cd ..;'
 
 alias gst='git status'
+alias ta='task add'
 
-alias kepler_backup="rsync -a --delete --info=progress2 -v --exclude '.cache/' --exclude '.config/Slack/' --exclude '.local/share/recently-used.xbel' -e 'ssh -p 22001' /home/daraghhollman/ daraghhollman@79.97.106.33:/storage/kepler_backup/"
+alias kepler_backup="rsync -a --delete --info=progress2 -v --exclude '~/.local/share/Trash/' --exclude '.cache/' --exclude '.config/Slack/' --exclude '.local/share/recently-used.xbel' -e 'ssh -p 22001' /home/daraghhollman/ daraghhollman@79.97.106.33:/storage/kepler_backup/"
 
 alias hss='hugo server --noHTTPCache'
 alias hsd='hugo server -D'
@@ -103,12 +103,19 @@ alias yt='yt-dlp --add-metadata -i'
 alias yta='yt -x -f bestaudio/best'
 alias ytp='yt --yes-playlist -x --audio-format best --audio-quality 0 --embed-metadata --embed-thumbnail --output "%(playlist_index)02d - %(title)s.%(ext)s"'
 
+# Supress warnings
+export PYTHONWARNINGS=ignore
 # Papis helper functions
+kpapis() {
+	papis $@
+	exit
+}
 bibexport() {
 	papis export --format bibtex $1 | wl-copy
 }
 library_backup() {
-	papis git commit -a
+	papis git add .
+	papis git commit -m "Automated library backup $(date)"
 	papis git push
 }
 
@@ -132,6 +139,17 @@ pyenv() {
 	pyenv "$@"
 }
 
+alias fk="fuck"
+eval "$(thefuck --alias)"
+
 # Set prompt
 eval "$(zoxide init zsh)"
 eval "$(starship init zsh)"
+
+# SSH AGENT
+if ! pgrep -u "$USER" ssh-agent > /dev/null; then
+    ssh-agent -t 1h > "$XDG_RUNTIME_DIR/ssh-agent.env"
+fi
+if [ ! -f "$SSH_AUTH_SOCK" ]; then
+    source "$XDG_RUNTIME_DIR/ssh-agent.env" >/dev/null
+fi
