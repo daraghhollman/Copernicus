@@ -2,6 +2,8 @@
 
 # Define a list of accented characters and their descriptions
 chars=$(cat <<EOF
+í  (i acute)
+ì  (i grave)
 á  (a acute)
 à  (a grave)
 â  (a circumflex)
@@ -14,8 +16,6 @@ chars=$(cat <<EOF
 è  (e grave)
 ê  (e circumflex)
 ë  (e umlaut)
-í  (i acute)
-ì  (i grave)
 ï  (i umlaut)
 ñ  (n tilde)
 ó  (o acute)
