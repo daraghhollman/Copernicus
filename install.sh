@@ -43,7 +43,7 @@ mkdir -p $HOME/.config/wtf/
 mkdir -p $HOME/.config/zsh/
 sudo mkdir -p /usr/share/zsh/plugins/zsh-fzf-history-search/
 
-mkdir -p $HOME/.config/qutebrowser/
+mkdir -p $HOME/.config/qutebrowser/greasemonkey/
 
 # Make links
 echo "$Creating symlinks"
@@ -88,6 +88,7 @@ ln -s $HOME/Copernicus/zsh/zshenv $HOME/.zshenv
 sudo ln -s $HOME/Copernicus/zsh/zsh-fzf-history-search/zsh-fzf-history-search.zsh /usr/share/zsh/plugins/zsh-fzf-history-search/zsh-fzf-history-search.zsh
 
 ln -s $HOME/Copernicus/qutebrowser/* $HOME/.config/qutebrowser/
+ln -s $HOME/Copernicus/qutebrowser/greasemonkey/* $HOME/.config/qutebrowser/greasemonkey/
 
 # Set up crontabs
 echo "Adding cron jobs"
