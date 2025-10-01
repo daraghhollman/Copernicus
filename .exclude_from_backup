@@ -1,0 +1,12 @@
+.cabal
+.pyenv
+Main/data
+.cache
+*.git/*
+.cargo
+.mozilla
+.steam
+.thunderbird
+.zotero
+.wine
+.local

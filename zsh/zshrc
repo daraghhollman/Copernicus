@@ -74,6 +74,91 @@ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 
 # ------------------ Aliases --------------------- #
 
+# There is some weirdness with kitty when using shh. They have
+# an inbuild wrapper to copy some kitty info over when ussing
+# ssh so functions like clear work correctly.
+alias ssh="kitten ssh"
+
+copy_to_copernicus() {
+	rsync -v --info=progress2 $1 copernicus:$2
+}
+
+bpd() {
+    # Kill existing tunnel
+    pkill -f "ssh.*8050:localhost:8050" 2>/dev/null
+
+    # Start detached SSH tunnel
+    nohup ssh -f -N -L 8050:localhost:8050 copernicus >/dev/null 2>&1 &
+
+    # Wait for connection
+    sleep 2
+
+    # Open browser
+    $BROWSER http://localhost:8050 & disown
+
+    exit
+}
+immich() {
+    # Kill existing tunnel
+    pkill -f "ssh.*2283:localhost:2283" 2>/dev/null
+
+    # Start detached SSH tunnel
+    nohup ssh -f -N -L 2283:localhost:2283 copernicus >/dev/null 2>&1 &
+
+    # Wait for connection
+    sleep 2
+
+    # Open browser
+    qutebrowser http://localhost:2283 & disown
+
+    exit
+}
+photoprism() {
+    # Kill existing tunnel
+    pkill -f "ssh.*2342:localhost:2342" 2>/dev/null
+
+    # Start detached SSH tunnel
+    nohup ssh -f -N -L 2342:localhost:2342 copernicus >/dev/null 2>&1 &
+
+    # Wait for connection
+    sleep 2
+
+    # Open browser
+    qutebrowser http://localhost:2342 & disown
+
+    exit
+}
+bluemap() {
+    # Kill existing tunnel
+    pkill -f "ssh.*8100:localhost:8100" 2>/dev/null
+
+    # Start detached SSH tunnel
+    nohup ssh -f -N -L 8100:localhost:8100 copernicus >/dev/null 2>&1 &
+
+    # Wait for connection
+    sleep 2
+
+    # Open browser
+    qutebrowser http://localhost:8100 & disown
+
+    exit
+}
+ask_ollama() {
+    # Kill existing tunnel
+    pkill -f "ssh.*8080:localhost:8080" 2>/dev/null
+
+    # Start detached SSH tunnel
+    nohup ssh -f -N -L 8080:localhost:8080 copernicus >/dev/null 2>&1 &
+
+    # Wait for connection
+    sleep 2
+
+    # Open browser
+    qutebrowser http://localhost:8080 & disown
+
+    exit
+}
+
 alias open="xdg-open"
 # Setting defaults for opening
 xdg-mime default swayimg.desktop image/jpeg
@@ -93,7 +178,7 @@ alias .....='cd ..; cd ..; cd ..; cd ..;'
 alias gst='git status'
 alias ta='task add'
 
-alias kepler_backup="rsync -a --delete --info=progress2 -v --exclude '~/.local/share/Trash/' --exclude '.cache/' --exclude '.config/Slack/' --exclude '.local/share/recently-used.xbel' -e 'ssh -p 22001' /home/daraghhollman/ daraghhollman@79.97.106.33:/storage/kepler_backup/"
+alias backup_to_home="rsync -a --delete --info=progress2 --exclude-from='/home/daraghhollman/Copernicus/.exclude_from_backup' -v -e 'ssh -p 22002' /home/daraghhollman/ daraghhollman@$(cat /home/daraghhollman/Copernicus/.home_ip):/home/daraghhollman/$(cat /proc/sys/kernel/hostname)_backup/"
 
 alias hss='hugo server --noHTTPCache'
 alias hsd='hugo server -D'
@@ -150,7 +235,7 @@ eval "$(starship init zsh)"
 
 # SSH AGENT
 if ! pgrep -u "$USER" ssh-agent > /dev/null; then
-    ssh-agent -t 1h > "$XDG_RUNTIME_DIR/ssh-agent.env"
+    ssh-agent -t 24h > "$XDG_RUNTIME_DIR/ssh-agent.env"
 fi
 if [ ! -f "$SSH_AUTH_SOCK" ]; then
     source "$XDG_RUNTIME_DIR/ssh-agent.env" >/dev/null
