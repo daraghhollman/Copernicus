@@ -42,7 +42,7 @@ format = """
 [(  🐍 ($virtualenv)\n)]($style)"""
 
 [git_branch]
-symbol = ""
+symbol = "󰊢"
 format = '[[ $symbol $branch ](fg:white bg:background)]($style)'
 
 [git_status]
