@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+STATE_FILE="$HOME/.config/hypr/hypersunset_state"
+
+# If the file doesn't exist, assume day mode by default
+if [ ! -f "$STATE_FILE" ]; then
+    echo "day" > "$STATE_FILE"
+fi
+
+CURRENT_STATE=$(cat "$STATE_FILE")
+
+# Toggle state and apply appropriate settings
+if [ "$CURRENT_STATE" = "day" ]; then
+    echo "night" > "$STATE_FILE"
+    hyprctl hyprsunset temperature 4000
+    hyprctl hyprsunset gamma 90
+    notify-send "Night mode"
+else
+    echo "day" > "$STATE_FILE"
+    hyprctl hyprsunset identity
+    notify-send "Day mode"
+fi
