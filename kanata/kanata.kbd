@@ -1,4 +1,5 @@
 (defsrc
+    esc caps
     a s d f
     j k l ;
 )
@@ -21,6 +22,7 @@
 )
 
 (deflayer base
+    caps esc
     @a-mod @s-mod @d-mod @f-mod
     @j-mod @k-mod @l-mod @;-mod
 )
