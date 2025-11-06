@@ -1,0 +1,76 @@
+{
+  "modules-left": [
+    "ext/workspaces",
+    "custom/sep",
+    "dwl/window#title"
+  ],
+  "modules-right": [
+    "custom/sep",
+    "battery",
+    "custom/sep",
+    "network",
+    "custom/sep",
+    "cpu",
+    "custom/sep",
+    "memory",
+    "custom/sep",
+    "temperature",
+    "custom/sep",
+    "clock",
+  ],
+
+  "clock": {
+    "format-alt": "{:%Y-%m-%d}"
+  },
+  "cpu": {
+    "format": "CPU: {usage}%",
+    "tooltip": false,
+    "on-click": "exec kitty --start-as fullscreen btop"
+  },
+  "memory": {
+    "format": "RAM: {used}GiB"
+  },
+  "battery": {
+    "states": {
+      "good": 95,
+      "warning": 30,
+      "critical": 15
+    },
+    "format": "BAT {capacity}%",
+    "format-alt": "BAT: {capacity}% {time}",
+    "format-plugged": "{capacity}% ",
+    "format-time": "{H}:{M}",
+  },
+  "network": {
+    "format-wifi": "WIFI: {signalStrength}%",
+    "tooltip-format-wifi": "{essid}",
+    "format-ethernet": "󰈀",
+    "format-disconnected": "⚠",
+    "on-click": "exec kitty nmtui",
+  },
+  "temperature": {
+      "thermal-zone": 3,
+      "critical-threshold": 90,
+      "format-critical": "!{temperatureC}°C!",
+      "format": "{temperatureC}°C",
+  },
+  "ext/workspaces": {
+    "format": "{icon}",
+    "ignore-hidden": false,
+    "on-click": "activate",
+    "sort-by-id": true
+  },
+  "dwl/tags": {
+    "num-tags": 9
+  },
+  "dwl/window#layout": {
+    "format": "[{layout}]"
+  },
+  "dwl/window#title": {
+    "format": "{title}"
+  },
+  "custom/sep": {
+    "format": "|",
+    "interval": 0
+  }
+}
