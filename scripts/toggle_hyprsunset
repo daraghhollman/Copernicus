@@ -12,8 +12,8 @@ CURRENT_STATE=$(cat "$STATE_FILE")
 # Toggle state and apply appropriate settings
 if [ "$CURRENT_STATE" = "day" ]; then
     echo "night" > "$STATE_FILE"
-    hyprctl hyprsunset temperature 4000
-    hyprctl hyprsunset gamma 90
+    hyprctl hyprsunset temperature 3000
+    hyprctl hyprsunset gamma 85
     notify-send "Night mode"
 else
     echo "day" > "$STATE_FILE"
