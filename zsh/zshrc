@@ -159,7 +159,7 @@ ask_ollama() {
     exit
 }
 
-alias open="xdg-open & disown"
+alias open="xdg-open"
 # Setting defaults for opening
 xdg-mime default swayimg.desktop image/jpeg
 xdg-mime default swayimg.desktop image/png
