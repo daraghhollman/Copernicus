@@ -1,97 +1,67 @@
 {
-	"spacing": 4,
-	// try to keep it 4px across the config
-	"height": 25,
-	"modules-left": [
-		"hyprland/workspaces",
-		"tray",
-		"hyprland/window"
-	],
-	"modules-center": [
-		"mpd",
-	],
-	"modules-right": [
-		"cpu",
-		"memory",
-		"pulseaudio",
-		"backlight",
-		"temperature",
-		"battery",
-		"clock"
-	],
+  "position": "top",
+  "modules-left": [
+    "hyprland/workspaces",
+    "custom/sep",
+    "tray",
+    "custom/sep",
+    "hyprland/window"
+  ],
+  "modules-right": [
+    "custom/sep",
+    "battery",
+    "custom/sep",
+    "network",
+    "custom/sep",
+    "cpu",
+    "custom/sep",
+    "memory",
+    "custom/sep",
+    "temperature",
+    "custom/sep",
+    "clock",
+  ],
 
-	/*
-MODULES
-*/
-	"tray": {
-		"spacing": 10,
-		"icon-size": 14
-	},
-	"clock": {
-		"tooltip-format": "<big>[{:%Y %B}]</big>\n<tt><small>{calendar}</small></tt>",
-		"format": "[ {:%H:%M} ]",
-		"format-alt": "[ {:%Y-%m-%d} ]"
-	},
-	"cpu": {
-		"format": "[ CPU:{usage}% ]",
-		"tooltip": false,
-		"on-click": "kitty btop"
-	},
-	"memory": {
-		"format": "[ MEM:{percentage}% ]",
-		"on-click": "kitty btop"
-	},
-	"temperature": {
-		"thermal-zone": 3,
-		"critical-threshold": 90,
-		"format-critical": "[ !{temperatureC}°C! ]",
-		"format": "[ {temperatureC}°C ]",
-		"on-click": "kitty btop"
-	},
-	"battery": {
-		"format": "[ BAT:{capacity}% ]"
-	},
-	"pulseaudio": {
-		// "scroll-step": 1, // %, can be a float
-		"format": "[ VOL:{volume}% ]",
-		"format-muted": "[ VOL: M ]",
-		"on-click": "GTK_THEME=Adwatia pavucontrol"
-	},
-	"hyprland/window": {
-		"format": "󰣇 [{}]"
-	},
-	"backlight": {
-		"device": "intel_backlight",
-		"format": "[ BRI:{percent}% ]"
-	},
-	"mpd": {
-		"format": "{stateIcon} {artist} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ",
-		"format-disconnected": "",
-		"format-stopped": "",
-		"interval": 0.5,
-		"consume-icons": {
-			"on": " " // Icon shows only when "consume" is on
-		},
-		"random-icons": {
-			"off": "<span color='#f53c3c'></span> ", // Icon grayed out when "random" is off
-			"on": " "
-		},
-		"repeat-icons": {
-			"on": " "
-		},
-		"single-icons": {
-			"on": "1 "
-		},
-		"state-icons": {
-			"paused": "",
-			"playing": ""
-		},
-		"tooltip-format": "MPD (connected)",
-		"tooltip-format-disconnected": "MPD (disconnected)",
-	},
-	"custom/phd_timer": {
-		"interval": "once",
-		"exec": "months_left_in_phd █ │"
-	},
-
+  "clock": {
+    "format-alt": "{:%Y-%m-%d}"
+  },
+  "cpu": {
+    "format": "CPU: {usage}%",
+    "tooltip": false,
+    "on-click": "exec kitty --start-as fullscreen btop"
+  },
+  "memory": {
+    "format": "RAM: {used}GiB"
+  },
+  "battery": {
+    "states": {
+      "good": 95,
+      "warning": 30,
+      "critical": 15
+    },
+    "format": "BAT {capacity}%",
+    "format-alt": "BAT: {capacity}% {time}",
+    "format-plugged": "{capacity}% ",
+    "format-time": "{H}:{M}",
+  },
+  "network": {
+    "format-wifi": "WIFI: {signalStrength}%",
+    "tooltip-format-wifi": "{essid}",
+    "format-ethernet": "󰈀",
+    "format-disconnected": "⚠",
+    "on-click": "exec kitty nmtui",
+  },
+  "temperature": {
+      "thermal-zone": 3,
+      "critical-threshold": 90,
+      "format-critical": "!{temperatureC}°C!",
+      "format": "{temperatureC}°C",
+  },
+  "hyprland/window": {
+      "format": "{}"
+  },
+  "custom/sep": {
+    "format": "|",
+    "interval": 0
+  }
 }
