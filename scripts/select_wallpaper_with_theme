@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+# Get only dark, non-random themes from pywal's list
+themes=$(wal --theme \
+    | sed 's/\x1b\[[0-9;]*m//g' \
+    | tr -d '\r' \
+    | awk '/Dark Themes:/ {in_dark=1; next} /Light Themes:/ {in_dark=0} in_dark' \
+    | grep -E " - " \
+    | sed 's/ - //g' \
+    | grep -v '^random')
+
+
+chosen=$(echo "$themes" | rofi -dmenu -p "Select theme:")
+
+# If no theme is chosen, choose a wallpaper with auto theme
+[ -z "$chosen" ] && wallpapermenu && exit
+
+wallpapermenu $chosen

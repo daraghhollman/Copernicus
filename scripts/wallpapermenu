@@ -7,15 +7,12 @@ CURRENT_WALLPAPER=$WALLPAPER_DIRECTORY/current_wallpaper
 # Mark selection with 'm'
 CHOICE=$(nsxiv -otb $WALLPAPER_DIRECTORY)
 
-THEME="base16-gruvbox-hard"
+THEME=${1:-""}
 
-# Generate colours
-if [ "$1" = "-l" ]; then
-	echo "GENERATING LIGHT THEME!"
-	wal --theme "$THEME" -i "$CHOICE" -l --cols16 -n
-
+if [[ -z "$THEME" ]]; then
+	# Generate colours
+	wal -i "$CHOICE" --cols16 -n
 else
-	echo "GENERATING DARK THEME!"
 	wal --theme "$THEME" -i "$CHOICE" --cols16 -n
 fi
 
