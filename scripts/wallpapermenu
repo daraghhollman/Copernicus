@@ -1,11 +1,15 @@
 #!/usr/bin/env bash
 
 WALLPAPER_DIRECTORY=$HOME/Photos/Wallpapers/
-CURRENT_WALLPAPER=$WALLPAPER_DIRECTORY/current_wallpaper
+CURRENT_WALLPAPER=$WALLPAPER_DIRECTORY/_current_wallpaper
 
 # Selec wallpaper from above directory
 # Mark selection with 'm'
-CHOICE=$(nsxiv -otb $WALLPAPER_DIRECTORY)
+WALLPAPERS=$(find ~/Photos/Wallpapers -type f ! -name '_current_wallpaper' -printf '%T@ %p\n' | sort -nr | awk '{ $1=""; sub(/^ /,""); print }')
+CHOICE=$(nsxiv -otb $WALLPAPERS)
+
+# Update the timestamp of choice
+touch $CHOICE
 
 THEME=${1:-""}
 
