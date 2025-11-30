@@ -29,3 +29,5 @@ killall waybar; waybar
 
 # Set mozilla stuff
 pywalfox update
+
+spicetify apply
