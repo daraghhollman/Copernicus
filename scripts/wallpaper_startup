@@ -20,5 +20,5 @@ sleep 1
 WALLPAPER=$(< "${HOME}/.cache/wal/wal")
 
 # Apply the wallpaper using hyprctl
-hyprctl hyprpaper reload ,"$WALLPAPER"
+hyprctl hyprpaper wallpaper ,"$WALLPAPER"
 waybar &

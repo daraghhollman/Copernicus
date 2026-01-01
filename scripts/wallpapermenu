@@ -22,12 +22,10 @@ fi
 
 cp $CHOICE $CURRENT_WALLPAPER
 
-hyprctl hyprpaper reload ,"$CURRENT_WALLPAPER"
+hyprctl hyprpaper wallpaper ,"$CURRENT_WALLPAPER"
 
 # Waybar needs to be refreshed to change colours
 killall waybar; waybar
 
 # Set mozilla stuff
 pywalfox update
-
-spicetify apply
