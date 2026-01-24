@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+gst-launch-1.0 libcamerasrc ! \
+    videoconvert ! \
+    video/x-raw,format=I420 ! \
+    v4l2sink device=/dev/video49
