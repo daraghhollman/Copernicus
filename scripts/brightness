@@ -32,12 +32,16 @@ notify_user() {
 
 # Increase brightness
 inc_backlight() {
-	brightnessctl set 5%+ && get_icon
+	brightnessctl set 5%+ && get_icon && update_bar
 }
 
 # Decrease brightness
 dec_backlight() {
-	brightnessctl set 5%- && get_icon
+	brightnessctl set 5%- && get_icon && update_bar
+}
+
+update_bar() {
+    echo "scale=0; 100 * $(brightnessctl g) / $(brightnessctl m)" | bc -l > "$WOBSOCK_YELLOW"
 }
 
 # Execute accordingly
