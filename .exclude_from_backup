@@ -1,6 +1,6 @@
 .cabal
 .pyenv
-Main/data
+Main/data/*
 .cache
 *.git/*
 .cargo
@@ -10,3 +10,4 @@ Main/data
 .zotero
 .wine
 .local
+.hermpy/*
