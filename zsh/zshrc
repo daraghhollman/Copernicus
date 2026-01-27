@@ -5,6 +5,7 @@ path=(
     $HOME/Copernicus/scripts/
     $HOME/Main/notes/scripts/
     $HOME/Main/expenses/scripts/
+    $HOME/.cargo/bin/
 )
 
 # Remove any duplicates
@@ -31,6 +32,8 @@ setopt HIST_IGNORE_DUPS # Consecutive repeated lines are ignored
 autoload edit-command-line; zle -N edit-command-line
 bindkey "^e" edit-command-line
 
+(cat ~/.cache/wal/sequences &) # Colours from wal
+
 # ------------ Environement Variables -------------- #
 
 export EDITOR=nvim
@@ -55,19 +58,12 @@ zmodload zsh/complist
 compinit
 _comp_options+=(globdots) # Include dot files
 
-# Use vim keys in tab complete menu:
-bindkey -M menuselect 'h' vi-backward-char
-bindkey -M menuselect 'k' vi-up-line-or-history
-bindkey -M menuselect 'l' vi-forward-char
-bindkey -M menuselect 'j' vi-down-line-or-history
-
-(cat ~/.cache/wal/sequences &) # Colours from wal
-
 # Search history with ctrl-r
 source /usr/share/zsh/plugins/zsh-fzf-history-search/zsh-fzf-history-search.zsh
 
 # Auto suggestions
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+export ZSH_AUTOSUGGEST_STRATEGY=(completion)
 
 # Add syntax highlighting
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
@@ -83,21 +79,6 @@ copy_to_copernicus() {
 	rsync -v --info=progress2 $1 copernicus:$2
 }
 
-bpd() {
-    # Kill existing tunnel
-    pkill -f "ssh.*8050:localhost:8050" 2>/dev/null
-
-    # Start detached SSH tunnel
-    nohup ssh -f -N -L 8050:localhost:8050 copernicus >/dev/null 2>&1 &
-
-    # Wait for connection
-    sleep 2
-
-    # Open browser
-    $BROWSER http://localhost:8050 & disown
-
-    exit
-}
 immich() {
     # Kill existing tunnel
     pkill -f "ssh.*2283:localhost:2283" 2>/dev/null
@@ -110,21 +91,6 @@ immich() {
 
     # Open browser
     qutebrowser http://localhost:2283 & disown
-
-    exit
-}
-photoprism() {
-    # Kill existing tunnel
-    pkill -f "ssh.*2342:localhost:2342" 2>/dev/null
-
-    # Start detached SSH tunnel
-    nohup ssh -f -N -L 2342:localhost:2342 copernicus >/dev/null 2>&1 &
-
-    # Wait for connection
-    sleep 2
-
-    # Open browser
-    qutebrowser http://localhost:2342 & disown
 
     exit
 }
@@ -183,7 +149,7 @@ alias backup_to_home="rsync -a --delete --info=progress2 --exclude-from='/home/d
 alias hss='hugo server --noHTTPCache'
 alias hsd='hugo server -D'
 
-alias diasvpn="sudo openvpn --config /home/daraghhollman/Main/Work/vpn/dhollman.ovpn"
+alias diasvpn="sudo openvpn --config /home/daraghhollman/Main/work/vpn/dhollman.ovpn"
 
 # Download from youtube
 alias yt='yt-dlp --add-metadata -i'
@@ -193,6 +159,7 @@ alias ytp='yt --yes-playlist -x --audio-format best --audio-quality 0 --embed-me
 # Supress warnings
 export PYTHONWARNINGS=ignore
 # Papis helper functions
+alias papis='uvx papis'
 kpapis() {
 	papis $@
 	exit
