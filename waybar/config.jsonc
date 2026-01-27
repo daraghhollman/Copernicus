@@ -49,7 +49,7 @@
     "tooltip-format-wifi": "{essid}",
     "format-ethernet": "󰈀",
     "format-disconnected": "⚠",
-    "on-click": "exec kitty nmtui",
+    "on-click": "exec kitty impala",
   },
   "temperature": {
       "thermal-zone": 3,
