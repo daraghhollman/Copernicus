@@ -164,6 +164,10 @@ kpapis() {
 	papis $@
 	exit
 }
+zpapis() {
+	papis --set opentool zathura $@
+	exit
+}
 bibexport() {
 	papis export --format bibtex $1 | wl-copy
 }
