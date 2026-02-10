@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 SHADER="$HOME/.config/hypr/shaders/grayscale.glsl"
+PREVIOUS_BRIGHTNESS="/tmp/previous-brightness"
 
 # Check active shader
 
@@ -8,14 +9,24 @@ if hyprshade current | grep -q "grayscale"; then
 
     hyprshade off
     hyprctl reload
-    brightnessctl set 60%
+
+    # Check if previous brightness file exists
+    if [[ -f $PREVIOUS_BRIGHTNESS ]]; then
+        brightnessctl set "$(cat $PREVIOUS_BRIGHTNESS)%"
+    else
+        brightnessctl set 60%
+    fi
     waybar &
 
 
 else
 
+    # Record previous brightness
+    echo "$(python -c "print(int(100 * $(brightnessctl g) / $(brightnessctl m)))")" > $PREVIOUS_BRIGHTNESS
+
     hyprshade on $SHADER
     pkill waybar
+
     brightnessctl set 37%
 
     # Force E-ink visuals: No animations, no shadows, thin black borders
