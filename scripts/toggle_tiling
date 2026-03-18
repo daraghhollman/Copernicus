@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+
+state_file=$HOME/.config/tiling-state
+
+if [[ ! -f $state_file ]]; then
+		echo "main" > $state_file
+fi
+
+mode=$(cat $state_file)
+
+if [[ "$mode" = "dwindle" ]]; then
+    # Switch to master
+    notify-send "Switching layout"
+    echo "master" > $state_file
+    hyprctl keyword general:layout master
+
+
+elif [[ "$mode" == "master" ]]; then
+    # Switch to dwindle
+    notify-send "Switching layout"
+    echo "dwindle" > $state_file
+    hyprctl keyword general:layout dwindle
+
+else
+		notify-send "State file does not exist, creating"
+		echo "dwindle" > $state_file
+
+fi
