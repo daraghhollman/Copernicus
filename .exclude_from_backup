@@ -1,6 +1,7 @@
 .cabal
 .pyenv
 Main/data/*
+.config/Slack/*
 .cache
 *.git/*
 .cargo
