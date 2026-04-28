@@ -12,3 +12,5 @@ Main/data/*
 .wine
 .local
 .hermpy/*
+.npm
+Main/VMs/
