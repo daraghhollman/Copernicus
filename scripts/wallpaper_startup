@@ -1,9 +1,11 @@
 #!/usr/bin/env bash
 
+WALLPAPER="~/Photos/Wallpapers/_current_wallpaper"
+
 killall waybar
 
 # Generate colors and set wallpaper with wal
-wal --theme "base16-gruvbox-hard" -i --cols16 ~/Photos/Wallpapers/ -n
+wal --theme "base16-gruvbox-hard" --cols16 -i $WALLPAPER
 #
 # Wait for pywal to finish fully
 while [ ! -f "${HOME}/.cache/wal/colors-waybar.css" ]; do
@@ -15,9 +17,6 @@ hyprpaper &
 
 # Wait a bit to ensure hyprpaper starts and wal finishes
 sleep 1
-
-# Load the wallpaper path
-WALLPAPER=$(< "${HOME}/.cache/wal/wal")
 
 # Apply the wallpaper using hyprctl
 hyprctl hyprpaper wallpaper ,"$WALLPAPER"
