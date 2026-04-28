@@ -94,36 +94,6 @@ immich() {
 
     exit
 }
-bluemap() {
-    # Kill existing tunnel
-    pkill -f "ssh.*8100:localhost:8100" 2>/dev/null
-
-    # Start detached SSH tunnel
-    nohup ssh -f -N -L 8100:localhost:8100 copernicus >/dev/null 2>&1 &
-
-    # Wait for connection
-    sleep 2
-
-    # Open browser
-    qutebrowser http://localhost:8100 & disown
-
-    exit
-}
-ask_ollama() {
-    # Kill existing tunnel
-    pkill -f "ssh.*8080:localhost:8080" 2>/dev/null
-
-    # Start detached SSH tunnel
-    nohup ssh -f -N -L 8080:localhost:8080 copernicus >/dev/null 2>&1 &
-
-    # Wait for connection
-    sleep 2
-
-    # Open browser
-    qutebrowser http://localhost:8080 & disown
-
-    exit
-}
 
 alias open="xdg-open"
 # Setting defaults for opening
@@ -188,6 +158,11 @@ function y() {
 }
 zle -N y
 bindkey "^o" y
+
+# Fuzzy find to open file
+alias fn='nvim $(fzf --smart-case)'
+# Fuzzy find to run python
+alias ur='uv run python $(fzf --smart-case)'
 
 # Defer pyenv init until needed
 pyenv() {
