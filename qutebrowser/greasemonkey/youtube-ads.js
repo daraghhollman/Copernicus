@@ -6,11 +6,11 @@
 // @match        *://*.youtube.com/*
 // @exclude      *://*.youtube.com/subscribe_embed?*
 // ==/UserScript==
-setInterval(() => {
-    const ad = [...document.querySelectorAll('.ad-showing')][0];
-    if (ad) {
-        document.querySelector('video').playbackRate = 1;
-        // const vid = document.querySelector('video');
-        // vid.currentTime = vid.duration - 1;
-    }
-}, 50)
+// setInterval(() => {
+//     const ad = [...document.querySelectorAll('.ad-showing')][0];
+//     if (ad) {
+//         document.querySelector('video').playbackRate = 1;
+//         // const vid = document.querySelector('video');
+//         // vid.currentTime = vid.duration - 1;
+//     }
+// }, 50)
