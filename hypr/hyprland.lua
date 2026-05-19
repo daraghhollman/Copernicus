@@ -24,6 +24,16 @@ hl.monitor({
 	scale = "1",
 })
 
+hl.monitor({
+	-- ESA screen
+	output = "DP-1",
+	mode = "3440x1440@60",
+	-- scaling from laptop screen means that we are only half the distance to the right
+	position = "auto-center-up",
+	scale = "1.25",
+	bitdepth = 10
+})
+
 -- PROGRAMS
 -- We set some variables here to make it easier to change later
 
@@ -254,12 +264,13 @@ hl.bind(mainMod .. " + SHIFT + J", hl.dsp.window.move({direction="down"}))
 for i = 1, 9 do
 	hl.bind(mainMod .. " + " .. i, hs.dsp.focus({workspace = i}))
 end
+hl.bind(mainMod .. " + 0", hs.dsp.focus({ workspace = 10 }))
 
 -- Move window to workspace
 for i = 1, 9 do
-	hl.bind(mainMod .. " + SHIFT + " .. i, hl.dsp.window.move({ workspace = i }))
+	hl.bind(mainMod .. " + SHIFT + " .. i, hs.dsp.window.move({ workspace = i }))
 end
-hl.bind(mainMod .. " + SHIFT + 0", hl.dsp.window.move({ workspace = 10 }))
+hl.bind(mainMod .. " + SHIFT + 0", hs.dsp.window.move({ workspace = 10 }))
 
 -- Toggle waybar & hyprpaper
 hl.bind(mainMod .. " + SHIFT + W", function()
