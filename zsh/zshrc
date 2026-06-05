@@ -3,7 +3,7 @@
 path=(
     $path
     $HOME/Copernicus/scripts/
-    $HOME/Main/notes/scripts/
+    $HOME/Main/projects/notes/src/
     $HOME/Main/expenses/scripts/
     $HOME/.cargo/bin/
 )
@@ -74,6 +74,8 @@ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 # an inbuild wrapper to copy some kitty info over when ussing
 # ssh so functions like clear work correctly.
 alias ssh="kitten ssh"
+
+alias cr="cargo run --"
 
 copy_to_copernicus() {
 	rsync -v --info=progress2 $1 copernicus:$2

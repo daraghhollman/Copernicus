@@ -1,10 +1,14 @@
 .cabal
 .pyenv
+.config/Mattermost/
 Main/data/*
-.config/Slack/*
+.config/Slack/
 .cache
 *.git/*
+*/aur/*/src/
 .cargo
+*.rlib
+*.rmeta
 .mozilla
 .steam
 .thunderbird
@@ -14,3 +18,5 @@ Main/data/*
 .hermpy/*
 .npm
 Main/VMs/
+Main/isos/
+.nuget

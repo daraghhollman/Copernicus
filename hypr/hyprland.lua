@@ -15,29 +15,39 @@ hl.monitor({
 	scale = "2",
 })
 
+-- hl.monitor({
+-- 	-- Home screen
+-- 	output = "DP-1",
+-- 	mode = "1920x1080@60",
+-- 	-- scaling from laptop screen means that we are only half the distance to the right
+-- 	position = "1280x0",
+-- 	scale = "1",
+-- })
+
 hl.monitor({
-	-- Home screen
-	output = "DP-1",
-	mode = "1920x1080@60",
+	-- Default Sharing
+	output = "HDMI-A-1",
+	mode = "preferred",
 	-- scaling from laptop screen means that we are only half the distance to the right
-	position = "1280x0",
+	-- position = "auto-center-up",
+	position = "auto-right",
 	scale = "1",
+	bitdepth = 10,
 })
 
-hl.monitor({
-	-- ESA screen
-	output = "DP-1",
-	mode = "3440x1440@60",
-	-- scaling from laptop screen means that we are only half the distance to the right
-	position = "auto-center-up",
-	scale = "1.25",
-	bitdepth = 10
+-- hl.monitor({
+-- 	-- Mirror to any
+-- 	output = "HDMI-A-1",
+-- 	mirror = "eDP-1",
+-- 	mode = "preferred",
+-- 	position = "auto-center-up",
+-- })
+
+hl.config({
+  xwayland = {
+    force_zero_scaling = true
+  }
 })
-
--- PROGRAMS
--- We set some variables here to make it easier to change later
-
-local terminal = "kitty"
 
 -- START-UP
 
@@ -239,10 +249,10 @@ hl.bind(mainMod .. " + T", hl.dsp.exec_cmd("toggle_tiling"))
 hl.bind(mainMod .. " + G", hl.dsp.exec_cmd("toggle_gaps"))
 
 -- Window focus
-hl.bind(mainMod .. " + H", hl.dsp.focus({direction = "left"}))
-hl.bind(mainMod .. " + L", hl.dsp.focus({direction = "right"}))
-hl.bind(mainMod .. " + K", hl.dsp.focus({direction = "up"}))
-hl.bind(mainMod .. " + J", hl.dsp.focus({direction = "down"}))
+hl.bind(mainMod .. " + H", hl.dsp.focus({ direction = "left" }))
+hl.bind(mainMod .. " + L", hl.dsp.focus({ direction = "right" }))
+hl.bind(mainMod .. " + K", hl.dsp.focus({ direction = "up" }))
+hl.bind(mainMod .. " + J", hl.dsp.focus({ direction = "down" }))
 
 -- Toggle kanata
 hl.bind(mainMod .. " + B", hl.dsp.exec_cmd("bash -c $HOME/Copernicus/scripts/toggle_kanata"))
@@ -255,14 +265,14 @@ hl.bind(mainMod .. " + I", hl.dsp.exec_cmd("rofimoji -a copy"))
 hl.bind(mainMod .. " + period", hl.dsp.exec_cmd("accent_characters"))
 
 -- Move window
-hl.bind(mainMod .. " + SHIFT + H", hl.dsp.window.move({direction="left"}))
-hl.bind(mainMod .. " + SHIFT + L", hl.dsp.window.move({direction="right"}))
-hl.bind(mainMod .. " + SHIFT + K", hl.dsp.window.move({direction="up"}))
-hl.bind(mainMod .. " + SHIFT + J", hl.dsp.window.move({direction="down"}))
+hl.bind(mainMod .. " + SHIFT + H", hl.dsp.window.move({ direction = "left" }))
+hl.bind(mainMod .. " + SHIFT + L", hl.dsp.window.move({ direction = "right" }))
+hl.bind(mainMod .. " + SHIFT + K", hl.dsp.window.move({ direction = "up" }))
+hl.bind(mainMod .. " + SHIFT + J", hl.dsp.window.move({ direction = "down" }))
 
 -- Switch workspaces
 for i = 1, 9 do
-	hl.bind(mainMod .. " + " .. i, hs.dsp.focus({workspace = i}))
+	hl.bind(mainMod .. " + " .. i, hs.dsp.focus({ workspace = i }))
 end
 hl.bind(mainMod .. " + 0", hs.dsp.focus({ workspace = 10 }))
 
@@ -279,12 +289,19 @@ hl.bind(mainMod .. " + SHIFT + W", function()
 end)
 
 -- Workspace cycling
-hl.bind(mainMod .. " + Tab", hs.dsp.focus({workspace = "m+1"}))
-hl.bind(mainMod .. " + SHIFT + Tab", hs.dsp.focus({workspace = "m-1"}))
+hl.bind(mainMod .. " + Tab", hs.dsp.focus({ workspace = "m+1" }))
+hl.bind(mainMod .. " + SHIFT + Tab", hs.dsp.focus({ workspace = "m-1" }))
 
 -- Move/resize with mouse
 hl.bind(mainMod .. " + mouse:272", hl.dsp.window.drag(), { mouse = true })
 hl.bind(mainMod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true })
+
+-- ... with keyboard
+local resize_rate = 50
+hl.bind(mainMod .. " + ALT + H", hl.dsp.window.resize({ x = -resize_rate, y = 0, relative = true }))
+hl.bind(mainMod .. " + ALT + J", hl.dsp.window.resize({ x = 0, y = resize_rate, relative = true }))
+hl.bind(mainMod .. " + ALT + K", hl.dsp.window.resize({ x = 0, y = -resize_rate, relative = true }))
+hl.bind(mainMod .. " + ALT + L", hl.dsp.window.resize({ x = resize_rate, y = 0, relative = true }))
 
 -- Volume
 hl.bind("xf86audioraisevolume", hl.dsp.exec_cmd("volume --inc 5"))
